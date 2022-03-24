@@ -125,9 +125,18 @@ public class Stanza {
     		if (direzione!=null)
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
-    	}
+    	
+    	/*
+    	* EDIT 16/03
+    	* Cambio for per evitare di andare in NULL
+    	* In questa soluzione mi fermo a numeroAttrezzi
+    	*/
+    	if(numeroAttrezzi!=0)						//Aggiunto if per stampare che non ci sono attrezzi in una stanza senza attrezzi
+	    	for (int i=0; i<numeroAttrezzi; i++)
+	    		risultato.append(attrezzi[i].toString()+" ");
+    	
+    	else	risultato.append("nessuno");			//se non ci sono attrezzi
+    	
     	return risultato.toString();
     }
 
