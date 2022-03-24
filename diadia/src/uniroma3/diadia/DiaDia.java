@@ -90,8 +90,10 @@ public class DiaDia {
 	 * Stampa informazioni di aiuto.
 	 */
 	private void aiuto() {
-		for(int i=0; i< elencoComandi.length; i++) 
+		for(int i=0; i< elencoComandi.length; i++) {
 			System.out.print(elencoComandi[i]+" ");
+			if(i==0) System.out.print("+ (nord, sud, est, ovest) ");					//EDIT 16/03 aggiunta di un aiuto per capire il comando vai
+		}											
 		System.out.println();
 	}
 
