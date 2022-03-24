@@ -58,7 +58,16 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
-
+		
+		/*
+		 * EDIT 17/03
+		 * Risolvo il caso in cui l'utente non scriva nulla e digiti solamente invio
+		 */
+		
+		if(comandoDaEseguire.getNome() == null) {
+			this.aiuto();
+			return false;
+		}
 		if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine(); 
 			return true;
