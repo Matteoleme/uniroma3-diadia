@@ -47,11 +47,20 @@ public class Stanza {
      */
     public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
         boolean aggiornato = false;
-    	for(int i=0; i<this.direzioni.length; i++)
-        	if (direzione.equals(this.direzioni[i])) {
-        		this.stanzeAdiacenti[i] = stanza;
+        //EDIT 25/03 risolto bug che impostava stessa stanza in due direzioni diverse
+        for(int i=0; i<this.numeroStanzeAdiacenti; i++)
+        	if (this.stanzeAdiacenti[i].equals(stanza)) {		//controllo se gia' presente
+        		System.out.println("Stanza gia' presente");
         		aggiornato = true;
         	}
+        // ciclo che scorre le direzioni della stanza corrente
+        // e controlla se la direzione presa in input era gia' stata messa
+        if(!aggiornato)
+	    	for(int i=0; i<this.direzioni.length; i++)
+	        	if (direzione.equals(this.direzioni[i])) {
+	        		this.stanzeAdiacenti[i] = stanza;
+	        		aggiornato = true;				// se gia' presente sovrascrivo
+	        	}
     	if (!aggiornato)
     		if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
     			this.direzioni[numeroStanzeAdiacenti] = direzione;
