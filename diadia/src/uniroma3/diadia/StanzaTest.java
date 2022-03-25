@@ -8,7 +8,14 @@ import org.junit.Test;
 
 
 public class StanzaTest {
-
+	
+	private Stanza 
+	
+	@Before
+	public void impostaStanza() {
+		
+	}
+	
 	@Test
 	public void testImpostaStanzaAdiacente() {
 		fail("Not yet implemented");
