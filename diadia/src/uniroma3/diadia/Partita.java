@@ -91,8 +91,15 @@ public class Partita {
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
 	 */
+	
+	/* EDIT 26/03 Aggiungo un controllo per vedere se e' stata settata 
+	 * una stanza vincente, altrimenti non eseguo il controllo
+	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== this.getStanzaVincente();
+		boolean result = false;
+		if(getStanzaVincente()!=null)
+			result = this.getStanzaCorrente()== this.getStanzaVincente();
+		return result;
 	}
 
 	/**
