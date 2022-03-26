@@ -43,6 +43,10 @@ public class Stanza {
 	 * @param stanza    stanza adiacente nella direzione indicata dal primo
 	 *                  parametro.
 	 */
+	
+	// prova a risolvere il fatto che quando metto una stanza in una direzione
+	// l'adiacente deve essere nella posizione opposta
+	
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		boolean aggiornato = false;
 		// EDIT 25/03 risolto bug che permetteva di impostare una stanza adiacente a se
@@ -209,6 +213,7 @@ public class Stanza {
 	 * 
 	 * @return un array di Stringhe delle direzioni della stanza
 	 */
+	
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 		for (int i = 0; i < this.numeroStanzeAdiacenti; i++)
