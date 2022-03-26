@@ -25,7 +25,12 @@ public class Partita {
 		this.finita = false;
 		this.cfu = CFU_INIZIALI;
 	}
-
+	
+	//Costruttore in overloading per test
+	public Partita(String test){
+		this.finita = false;
+		this.cfu = CFU_INIZIALI;
+	}
     /**
      * Crea tutte le stanze e le porte di collegamento
      */
