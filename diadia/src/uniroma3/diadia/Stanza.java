@@ -203,7 +203,12 @@ public class Stanza {
 		// TODO da implementare
 		return false;
 	}
-
+	
+	/**
+	 * Controlla quante direzioni ha una stanza.
+	 * 
+	 * @return un array di Stringhe delle direzioni della stanza
+	 */
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 		for (int i = 0; i < this.numeroStanzeAdiacenti; i++)
