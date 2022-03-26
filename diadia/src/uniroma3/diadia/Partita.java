@@ -65,6 +65,11 @@ public class Partita {
 		stanzaVincente = biblioteca;
     }
 
+	// EDIT 26/03 Aggiunta metodo setStanzaVincente
+	public void setStanzaVincente(Stanza stanzaVincente) {
+		this.stanzaVincente = stanzaVincente;
+	}
+   
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
@@ -107,5 +112,5 @@ public class Partita {
 
 	public void setCfu(int cfu) {
 		this.cfu = cfu;		
-	}	
+	}
 }
