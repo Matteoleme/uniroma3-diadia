@@ -45,7 +45,8 @@ public class Stanza {
 	 */
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		boolean aggiornato = false;
-		//EDIT 25/03 risolto bug che permetteva di impostare una stanza adiacente a se stessa
+		// EDIT 25/03 risolto bug che permetteva di impostare una stanza adiacente a se
+		// stessa
 		if (this.nome != stanza.nome) {
 			// EDIT 25/03 risolto bug che impostava stessa stanza in due direzioni diverse
 			for (int i = 0; i < this.numeroStanzeAdiacenti; i++)
@@ -59,7 +60,7 @@ public class Stanza {
 				for (int i = 0; i < this.direzioni.length; i++)
 					if (direzione.equals(this.direzioni[i])) {
 						this.stanzeAdiacenti[i] = stanza;
-						aggiornato = true; 		// se gia' presente sovrascrivo
+						aggiornato = true; // se gia' presente sovrascrivo
 					}
 			if (!aggiornato)
 				if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
@@ -67,8 +68,7 @@ public class Stanza {
 					this.stanzeAdiacenti[numeroStanzeAdiacenti] = stanza;
 					this.numeroStanzeAdiacenti++;
 				}
-		}
-		else {
+		} else {
 			System.out.println("Non posso impostare una stanza adiacente a se stessa");
 		}
 	}
@@ -143,7 +143,6 @@ public class Stanza {
 			if (direzione != null)
 				risultato.append(" " + direzione);
 		risultato.append("\nAttrezzi nella stanza: ");
-
 		/*
 		 * EDIT 16/03 Cambio for per evitare di andare in NULL In questa soluzione mi
 		 * fermo a numeroAttrezzi
@@ -167,9 +166,13 @@ public class Stanza {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		boolean trovato;
 		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+		// EDIT 26/03 Aggiungo controllo preventivo: se la stanza non ha nemmeno un attrezzo
+		// e' inutile che cerco
+		if (this.numeroAttrezzi != 0) {
+			for (Attrezzo attrezzo : this.attrezzi) {
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
+			}
 		}
 		return trovato;
 	}
