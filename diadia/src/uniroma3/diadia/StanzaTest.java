@@ -82,7 +82,7 @@ public class StanzaTest {
 
 	@Test
 	public void testImpostaStanzaAdiacenteVuota() {
-		assertEquals(null, noAdiacenti.getStanzaAdiacente("sud"));
+		assertNull(noAdiacenti.getStanzaAdiacente("sud"));
 	}
 	
 	@Test
