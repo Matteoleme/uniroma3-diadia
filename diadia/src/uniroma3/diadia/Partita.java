@@ -21,6 +21,7 @@ public class Partita {
 		mappa = new Labirinto(nome);
 		this.finita = false;
 		this.cfu = CFU_INIZIALI;
+		this.stanzaCorrente = mappa.getStanzaIniziale();
 	}
 	
 	// Aggiunto per i test
