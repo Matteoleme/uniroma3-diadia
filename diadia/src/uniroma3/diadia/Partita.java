@@ -26,7 +26,7 @@ public class Partita {
 	
 	// Aggiunto per i test
 	public Partita(String nome, String test){
-		mappa = new Labirinto(nome, "Test");
+		mappa = new Labirinto(nome, test);
 		this.finita = false;
 		this.cfu = CFU_INIZIALI;
 	}
