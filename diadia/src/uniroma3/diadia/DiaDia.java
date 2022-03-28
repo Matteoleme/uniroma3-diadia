@@ -41,9 +41,8 @@ public class DiaDia {
 		Scanner scannerDiLinee;
 		
 		//EDIT 16/03 dopo il messaggio di benvenuto printo dove mi trovo
-		System.out.println(MESSAGGIO_BENVENUTO + "\n" + partita.getStanzaCorrente().getDescrizione());
+		System.out.println(MESSAGGIO_BENVENUTO + "\nTi trovi in:\n" + partita.getStanzaCorrente().getDescrizione());
 
-		System.out.println(MESSAGGIO_BENVENUTO);
 		scannerDiLinee = new Scanner(System.in);		
 		do		
 			istruzione = scannerDiLinee.nextLine();
