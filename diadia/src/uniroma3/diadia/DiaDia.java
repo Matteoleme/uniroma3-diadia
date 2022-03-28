@@ -33,7 +33,7 @@ public class DiaDia {
 	private Partita partita;
 
 	public DiaDia() {
-		this.partita = new Partita();
+		this.partita = new Partita("Universita'");
 	}
 
 	public void gioca() {
