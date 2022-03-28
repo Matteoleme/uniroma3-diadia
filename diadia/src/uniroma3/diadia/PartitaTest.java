@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class PartitaTest {
 	
+	private Labirinto mappaProva;
 	private Partita partita;
 	private Partita partita2;
 	private Stanza StanzaVincente;
@@ -15,24 +16,26 @@ public class PartitaTest {
 	
 	@Before
 	public void setUpStanze() {
-		partita = new Partita("Test");
-		partita2 = new Partita("Test");		//Partita senza stanza corrente o vincente
+		mappaProva = new Labirinto("Test", "Test");
+		partita = new Partita("Test", "Test");
+		partita2 = new Partita("Test", "Test");		//Partita senza stanza corrente o vincente
 		StanzaVincente = new Stanza("StanzaVincente");
 		StanzaCorrente = new Stanza("StanzaCorrente");
 		StanzaTest = new Stanza("StanzaTest");
 		
-		partita.setStanzaVincente(StanzaVincente);
+		mappaProva.setStanzaIniziale(StanzaCorrente);
 		partita.setStanzaCorrente(StanzaCorrente);
 	}
 
 	@Test
 	public void testGetStanzaVincenteSenza() {
-		assertNull(partita2.getStanzaVincente());
+		assertNull(mappaProva.getStanzaVincente());
 	}
 	
 	@Test
 	public void testGetStanzaVincente() {
-		assertEquals(StanzaVincente, partita.getStanzaVincente());
+		mappaProva.setStanzaVincente(StanzaVincente);
+		assertEquals(StanzaVincente, mappaProva.getStanzaVincente());
 	}
 	
 	@Test
@@ -43,8 +46,8 @@ public class PartitaTest {
 	
 	@Test
 	public void testGetStanzaVincenteAggiornato() {
-		partita.setStanzaVincente(StanzaTest);
-		assertEquals(StanzaTest, partita.getStanzaVincente());
+		mappaProva.setStanzaVincente(StanzaTest);
+		assertEquals(StanzaTest, mappaProva.getStanzaVincente());
 	}
 	
 	@Test
@@ -55,7 +58,7 @@ public class PartitaTest {
 	
 	@Test
 	public void testVintaSenzaStanzaCorrente() {
-		partita2.setStanzaVincente(StanzaVincente);
+		mappaProva.setStanzaVincente(StanzaVincente);
 		assertEquals(false, partita2.vinta());
 	}
 	
@@ -63,7 +66,5 @@ public class PartitaTest {
 	public void testVintaSenzaNiente() {
 		assertEquals(false, partita2.vinta());
 	}
-	
-	
 
 }
