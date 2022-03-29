@@ -173,8 +173,10 @@ public class Stanza {
 		// EDIT 26/03 Aggiungo controllo preventivo: se la stanza non ha nemmeno un attrezzo
 		// e' inutile che cerco
 		if (this.numeroAttrezzi != 0) {
-			for (Attrezzo attrezzo : this.attrezzi) {
-				if (attrezzo.getNome().equals(nomeAttrezzo))
+			//EDIT 30/03 cambio il for per un errore che mi da nei test
+			//di removeAttrezzo
+			for (int i=0; i<numeroAttrezzi; i++) {
+				if (attrezzi[i].getNome().equals(nomeAttrezzo))
 					trovato = true;
 			}
 		}
@@ -203,8 +205,20 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
+	
+	//EDIT 30/03 aggiunta metodo removeAttrezzo
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// TODO da implementare
+		if(!hasAttrezzo(attrezzo.getNome()) || this.numeroAttrezzi==0) return false;
+		// se mi trovo qui vuol dire che l'attrezzo c'e'
+		for(int i=0; i<this.numeroAttrezzi; i++) {
+			if(attrezzo.equals(this.attrezzi[i])) {
+				// ho trovato quello da rimuovere
+				this.numeroAttrezzi--;
+				if(numeroAttrezzi!=0 || numeroAttrezzi==NUMERO_MASSIMO_ATTREZZI)	
+					this.attrezzi[i] = this.attrezzi[numeroAttrezzi];
+				return true;
+			}
+		}
 		return false;
 	}
 	
