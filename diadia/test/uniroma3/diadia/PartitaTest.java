@@ -10,6 +10,7 @@ public class PartitaTest {
 	private Labirinto mappaProva;
 	private Partita partita;
 	private Partita partita2;
+	private Giocatore giocatore;
 	private Stanza StanzaVincente;
 	private Stanza StanzaCorrente;
 	private Stanza StanzaTest;
@@ -17,8 +18,9 @@ public class PartitaTest {
 	@Before
 	public void setUpStanze() {
 		mappaProva = new Labirinto("Test", "Test");
-		partita = new Partita("Test", "Test");
-		partita2 = new Partita("Test", "Test");		//Partita senza stanza corrente o vincente
+		giocatore = new Giocatore("Manichino");
+		partita = new Partita("Test", giocatore, "Test");
+		partita2 = new Partita("Test", giocatore, "Test");		//Partita senza stanza corrente o vincente
 		StanzaVincente = new Stanza("StanzaVincente");
 		StanzaCorrente = new Stanza("StanzaCorrente");
 		StanzaTest = new Stanza("StanzaTest");

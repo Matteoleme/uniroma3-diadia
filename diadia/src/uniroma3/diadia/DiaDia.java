@@ -27,9 +27,11 @@ public class DiaDia {
 	static final private String[] elencoComandi = { "vai", "aiuto", "fine" };
 
 	private Partita partita;
+	private Giocatore player;
 
 	public DiaDia() {
-		this.partita = new Partita("Universita'");
+		this.player = new Giocatore("Giovanni");
+		this.partita = new Partita("Universita'", player);
 	}
 
 	public void gioca() {
@@ -107,8 +109,8 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.player.getCfu();
+			this.player.setCfu(cfu--);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
