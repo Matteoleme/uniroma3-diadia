@@ -2,9 +2,10 @@ package uniroma3.diadia;
 
 /**
  * Classe Giocatore - un giocatore e' il peronaggio che girera' nel labirinto
- * e che dovra' vincere la partita
+ * e che dovra' vincere la partita.
  * Un giocatore ha un nome, una borsa che contiene degli attrezzi e un numero di 
- * cfu che una volta finiti finiranno il gioco
+ * cfu che una volta finiti finiranno il gioco.
+ * Inizialmente il giocatore creato non ha una borsa
  * 
  * 
  * @author Matteoleme
@@ -20,8 +21,11 @@ public class Giocatore {
 	private Borsa borsa;
 	private int cfu;
 	
+	
+	// quando creo un giocatore esso inizialmente non ha una borsa
+	
 	public Giocatore(String nome) {
-		this.setNome(nome);
+		this.nome = nome;
 		this.borsa = null;
 		this.cfu = CFU_INIZIALI;
 	}
@@ -30,8 +34,8 @@ public class Giocatore {
 		return this.borsa;
 	}
 	
-	public void setBorsa(int peso) {
-		this.borsa = new Borsa(peso);
+	public void setBorsa(Borsa borsa) {
+		this.borsa = borsa;
 	}
 	
 	public int getCfu() {
