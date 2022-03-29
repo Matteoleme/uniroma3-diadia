@@ -56,6 +56,10 @@ public class Labirinto {
 		setStanzaVincente(biblioteca);
     }
 
+	public String getNome() {
+		return Nome;
+	}
+
 	public void setStanzaVincente(Stanza stanzaVincente) {
 		this.stanzaVincente = stanzaVincente;
 	}
