@@ -22,6 +22,7 @@ public class StanzaTest {
 	// stanze per il test di metodo AddAttrezzo
 	private Stanza noAttrezzi;		
 	private Stanza tuttiAttrezzi;
+	private Stanza unAttrezzo;
 	
 	private Attrezzo Martello;
 	private Attrezzo Spada;
@@ -101,6 +102,7 @@ public class StanzaTest {
 	@Before
 	public void setUpAttrezzi() {
 		this.noAttrezzi = new Stanza("Bagno");		
+		this.unAttrezzo = new Stanza("Camera da letto");		
 		this.tuttiAttrezzi = new Stanza("Cucina");
 		
 		Martello = new Attrezzo("Martello", 10);
@@ -125,7 +127,9 @@ public class StanzaTest {
 		this.tuttiAttrezzi.addAttrezzo(Ascia);
 		this.tuttiAttrezzi.addAttrezzo(Sasso);
 		this.tuttiAttrezzi.addAttrezzo(Cacciavite);
-
+		
+		this.unAttrezzo.addAttrezzo(Pala);
+		
 }
 	
 	
@@ -171,6 +175,26 @@ public class StanzaTest {
 	@Test
 	public void testHasAttrezzoStanzaSenzaAttrezzi() {
 		assertEquals(false, noAttrezzi.hasAttrezzo("Pala"));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoTrue() {
+		assertTrue(tuttiAttrezzi.removeAttrezzo(Ascia));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoTrueRimanentiZero() {
+		assertTrue(unAttrezzo.removeAttrezzo(Pala));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoMaNonCeNiente() {
+		assertFalse(noAttrezzi.removeAttrezzo(Ascia));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoMaNonCe() {
+		assertFalse(tuttiAttrezzi.removeAttrezzo(Pala));
 	}
 	
 }
