@@ -2,6 +2,11 @@ package uniroma3.diadia;
 
 import java.util.Scanner;
 
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Borsa;
+import it.uniroma3.diadia.giocatore.Giocatore;
+
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
  * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
@@ -93,24 +98,29 @@ public class DiaDia {
 		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
 		if (stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
 			Attrezzo attrezzoDaPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-			if (stanzaCorrente.removeAttrezzo(attrezzoDaPrendere)) {
-				if (this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere)) {
-					System.out.println(nomeAttrezzo + " preso");
-					return true;
-				} 
-				else
-					System.out.println("Borsa piena non e' possibile mettere altri attrezzi");
-			}
-			else
-				System.out.println("Non sono riuscito a prenderlo!");
-		}
-		else
+			if (this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere)) {
+				stanzaCorrente.removeAttrezzo(attrezzoDaPrendere);
+				System.out.println(nomeAttrezzo + " preso");
+				return true;
+			} else
+				System.out.println("Borsa piena non e' possibile mettere altri attrezzi");
+		} else
 			System.out.println(nomeAttrezzo + " non presente");
 		return false;
 	}
 
 	private boolean posa(String nomeAttrezzo) {
-		
+		Borsa borsa = this.partita.getGiocatore().getBorsa();
+		if (borsa.hasAttrezzo(nomeAttrezzo)) {
+			if (this.partita.getStanzaCorrente().addAttrezzo(borsa.getAttrezzo(nomeAttrezzo))) {
+				borsa.removeAttrezzo(nomeAttrezzo);
+				System.out.println(nomeAttrezzo + " posato");
+				return true;
+			} else
+				System.out.println("Stanza piena non e' possibile mettere altri attrezzi");
+		} else
+			System.out.println(nomeAttrezzo + " non presente");
+		return false;
 	}
 
 	// questo metodo diventa necessario per come ho strutturato il codice
@@ -132,8 +142,8 @@ public class DiaDia {
 		for (int i = 0; i < elencoComandi.length; i++) {
 			System.out.print(elencoComandi[i] + " ");
 			if (i == 0)
-				System.out.print("+ (nord, sud, est, ovest) "); // EDIT 16/03 aggiunta di un aiuto per capire il comando
-																// vai
+				System.out.print("+ direzione "); // EDIT 16/03 aggiunta di un aiuto per capire il comando
+													// vai
 		}
 		System.out.println();
 	}
