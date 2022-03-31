@@ -35,7 +35,7 @@ public class BorsaTest {
 		
 		tuttiAttrezzi = new Borsa(PESOGRANDE);			//sforo per numero di attrezzi
 		tantiAttrezzi = new Borsa(PESOMEDIO);			//sforo per peso attrezzi
-		nienteAttrezzi = new Borsa(PESOPICCOLO);			//sforo per peso attrezzi
+		nienteAttrezzi = new Borsa(PESOPICCOLO);		
 		Rotta = new Borsa(0);							
 		Strana = new Borsa();							
 		
@@ -140,6 +140,37 @@ public class BorsaTest {
 	@Test
 	public void testHasAttrezzoFalseVuota() {
 		assertFalse(Rotta.hasAttrezzo("Ascia"));
+	}
+	
+	@Test
+	public void testGetPesoDopoAggiunta() {
+		this.nienteAttrezzi.addAttrezzo(Corda);
+		assertEquals(2, nienteAttrezzi.getPeso());
+	}
+	
+	@Test
+	public void testIsEmptyTrue() {
+		assertTrue(nienteAttrezzi.isEmpty());
+	}
+	
+	@Test
+	public void testIsEmptyFalse() {
+		assertFalse(tuttiAttrezzi.isEmpty());
+	}
+	
+	@Test
+	public void testRemoveAttrezzo() {
+		assertEquals(Martello, tuttiAttrezzi.removeAttrezzo("Martello"));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoMaNonCeNiente() {
+		assertNull(Rotta.removeAttrezzo("Martello"));
+	}
+	
+	@Test
+	public void testRemoveAttrezzoMaNonCeQuello() {
+		assertNull(tuttiAttrezzi.removeAttrezzo("Pala"));
 	}
 	
 }
