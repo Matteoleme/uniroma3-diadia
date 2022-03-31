@@ -15,18 +15,18 @@ public class Partita {
 	private boolean finita;
 	private Giocatore player;
 	
-	public Partita(String mappa, Giocatore player){
+	public Partita(String mappa){
 		this.mappa = new Labirinto(mappa);
 		this.finita = false;
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
-		this.player = player;
+		this.player = new Giocatore("Luca");
 	}
 	
 	// Aggiunto per i test
-	public Partita(String mappa, Giocatore player, String test){
+	public Partita(String mappa, String test){
 		this.mappa = new Labirinto(mappa, test);
 		this.finita = false;
-		this.player = player;
+		this.player = new Giocatore("Luca");
 	}
 
 
@@ -37,6 +37,15 @@ public class Partita {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
+	
+	public Giocatore getGiocatore() {
+		return this.player;
+	}
+	
+	public void setGiocatore(String nomeGiocatore) {
+		this.player.setNome(nomeGiocatore);;
+	}
+	
 	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta

@@ -189,12 +189,14 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return l'attrezzo presente nella stanza. null se l'attrezzo non e' presente.
 	 */
+	
+	// EDIT 31/03 Cambio ciclo for perche da un errore
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
+		for (int i=0; i<this.numeroAttrezzi; i++) {
+			if (attrezzi[i].getNome().equals(nomeAttrezzo))
+				attrezzoCercato = attrezzi[i];
 		}
 		return attrezzoCercato;
 	}

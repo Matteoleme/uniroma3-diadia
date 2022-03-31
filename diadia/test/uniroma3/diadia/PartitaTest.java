@@ -19,8 +19,8 @@ public class PartitaTest {
 	public void setUpStanze() {
 		mappaProva = new Labirinto("Test", "Test");
 		giocatore = new Giocatore("Manichino");
-		partita = new Partita("Test", giocatore, "Test");
-		partita2 = new Partita("Test", giocatore, "Test");		//Partita senza stanza corrente o vincente
+		partita = new Partita("Test", "Test");
+		partita2 = new Partita("Test", "Test");		//Partita senza stanza corrente o vincente
 		StanzaVincente = new Stanza("StanzaVincente");
 		StanzaCorrente = new Stanza("StanzaCorrente");
 		StanzaTest = new Stanza("StanzaTest");
