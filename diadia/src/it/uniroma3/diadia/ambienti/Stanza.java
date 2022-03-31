@@ -1,4 +1,6 @@
-package uniroma3.diadia;
+package it.uniroma3.diadia.ambienti;
+
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo. Una stanza e' un luogo
@@ -151,11 +153,9 @@ public class Stanza {
 		 * EDIT 16/03 Cambio for per evitare di andare in NULL In questa soluzione mi
 		 * fermo a numeroAttrezzi
 		 */
-		if (numeroAttrezzi != 0) // Aggiunto if per stampare che non ci sono attrezzi in una stanza senza
-									// attrezzi
+		if (numeroAttrezzi != 0) // Aggiunto if per stampare che non ci sono attrezzi in una stanza senza attrezzi
 			for (int i = 0; i < numeroAttrezzi; i++)
 				risultato.append(attrezzi[i].toString() + " ");
-
 		else
 			risultato.append("nessuno"); // se non ci sono attrezzi
 

@@ -1,4 +1,4 @@
-package uniroma3.diadia;
+package it.uniroma3.diadia.giocatore;
 
 /**
  * Classe Giocatore - un giocatore e' il peronaggio che girera' nel labirinto

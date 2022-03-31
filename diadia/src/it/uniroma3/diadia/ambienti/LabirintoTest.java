@@ -1,4 +1,4 @@
-package uniroma3.diadia;
+package it.uniroma3.diadia.ambienti;
 
 import static org.junit.Assert.*;
 

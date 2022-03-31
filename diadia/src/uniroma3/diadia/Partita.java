@@ -1,5 +1,9 @@
 package uniroma3.diadia;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Giocatore;
+
 /**
  * Questa classe modella una partita del gioco
  *
@@ -46,7 +50,7 @@ public class Partita {
 		this.player.setNome(nomeGiocatore);;
 	}
 	
-	
+
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
