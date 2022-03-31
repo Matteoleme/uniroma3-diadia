@@ -24,7 +24,7 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = { "vai", "aiuto", "fine", "prendi", "posa"};
+	static final private String[] elencoComandi = { "vai", "aiuto", "fine", "prendi", "posa" };
 
 	private Partita partita;
 
@@ -37,8 +37,8 @@ public class DiaDia {
 		Scanner scannerDiLinee;
 
 		System.out.println(MESSAGGIO_BENVENUTO);
-		
-		//EDIT 31/03 aggiunta di un metodo per creare una nuova borsa
+
+		// EDIT 31/03 aggiunta di un metodo per creare una nuova borsa
 		scannerDiLinee = new Scanner(System.in);
 		System.out.println("Crea una borsa prima! Quanti kg puoi portare?");
 		int peso = scannerDiLinee.nextInt();
@@ -70,17 +70,14 @@ public class DiaDia {
 		if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine();
 			return true;
-		} 
-		else if (comandoDaEseguire.getNome().equals("vai"))
+		} else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
 		else if (comandoDaEseguire.getNome().equals("prendi"))
 			this.prendi(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("posa"))
-			this.posa();
-		else if (comandoDaEseguire.getNome().equals("CreaBorsa"))
-			this.posa();
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -91,33 +88,42 @@ public class DiaDia {
 	}
 
 	// implementazioni dei comandi dell'utente:
-	
+
 	private boolean prendi(String nomeAttrezzo) {
 		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
-		if(stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
+		if (stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
 			Attrezzo attrezzoDaPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
-			if(stanzaCorrente.removeAttrezzo(attrezzoDaPrendere))
-				if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere))
+			if (stanzaCorrente.removeAttrezzo(attrezzoDaPrendere)) {
+				if (this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere)) {
+					System.out.println(nomeAttrezzo + " preso");
 					return true;
+				} 
+				else
+					System.out.println("Borsa piena non e' possibile mettere altri attrezzi");
+			}
+			else
+				System.out.println("Non sono riuscito a prenderlo!");
 		}
-		System.out.println(nomeAttrezzo+" non presente");
+		else
+			System.out.println(nomeAttrezzo + " non presente");
 		return false;
 	}
 
-	private void posa() {
+	private boolean posa(String nomeAttrezzo) {
 		
 	}
-	
+
+	// questo metodo diventa necessario per come ho strutturato il codice
+	// e consente inoltre di far impostare all'utente di scegliere il peso della
+	// borsa
 	private void creaBorsa(int peso) {
 		Giocatore player = this.partita.getGiocatore();
-		if(player.getBorsa()==null) {
+		if (player.getBorsa() == null) {
 			Borsa borsa = new Borsa(peso);
 			player.setBorsa(borsa);
-		}
-		else
-			System.out.println("Il giocatore ha gia' una borsa di " +peso+"kg");
+		} else
+			System.out.println("Il giocatore ha gia' una borsa di " + peso + "kg");
 	}
-
 
 	/**
 	 * Stampa informazioni di aiuto.
@@ -159,7 +165,7 @@ public class DiaDia {
 	}
 
 	public static void main(String[] argc) {
-		DiaDia gioco = new DiaDia();				
+		DiaDia gioco = new DiaDia();
 		gioco.gioca();
 	}
 }
