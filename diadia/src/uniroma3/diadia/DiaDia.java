@@ -24,24 +24,26 @@ public class DiaDia {
 			+ "o regalarli se pensi che possano ingraziarti qualcuno.\n\n"
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = { "vai", "aiuto", "fine" };
+	static final private String[] elencoComandi = { "vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
-	private Giocatore player;
 
 	public DiaDia() {
-		this.player = new Giocatore("Giovanni");
-		this.partita = new Partita("Universita'", player);
+		this.partita = new Partita("Universita'");
 	}
 
 	public void gioca() {
 		String istruzione;
 		Scanner scannerDiLinee;
 
-		// EDIT 16/03 dopo il messaggio di benvenuto printo dove mi trovo
-		System.out.println(MESSAGGIO_BENVENUTO + "\nTi trovi in:\n" + partita.getStanzaCorrente().getDescrizione());
-
+		System.out.println(MESSAGGIO_BENVENUTO);
+		
+		//EDIT 31/03 aggiunta di un metodo per creare una nuova borsa
 		scannerDiLinee = new Scanner(System.in);
+		System.out.println("Crea una borsa prima! Quanti kg puoi portare?");
+		int peso = scannerDiLinee.nextInt();
+		this.creaBorsa(peso);
+		System.out.println("Ti trovi in:" + partita.getStanzaCorrente().getDescrizione());
 		do
 			istruzione = scannerDiLinee.nextLine();
 		while (!processaIstruzione(istruzione));
@@ -68,10 +70,17 @@ public class DiaDia {
 		if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine();
 			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
+		} 
+		else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa();
+		else if (comandoDaEseguire.getNome().equals("CreaBorsa"))
+			this.posa();
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -82,6 +91,33 @@ public class DiaDia {
 	}
 
 	// implementazioni dei comandi dell'utente:
+	
+	private boolean prendi(String nomeAttrezzo) {
+		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
+		if(stanzaCorrente.hasAttrezzo(nomeAttrezzo)) {
+			Attrezzo attrezzoDaPrendere = stanzaCorrente.getAttrezzo(nomeAttrezzo);
+			if(stanzaCorrente.removeAttrezzo(attrezzoDaPrendere))
+				if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzoDaPrendere))
+					return true;
+		}
+		System.out.println(nomeAttrezzo+" non presente");
+		return false;
+	}
+
+	private void posa() {
+		
+	}
+	
+	private void creaBorsa(int peso) {
+		Giocatore player = this.partita.getGiocatore();
+		if(player.getBorsa()==null) {
+			Borsa borsa = new Borsa(peso);
+			player.setBorsa(borsa);
+		}
+		else
+			System.out.println("Il giocatore ha gia' una borsa di " +peso+"kg");
+	}
+
 
 	/**
 	 * Stampa informazioni di aiuto.
@@ -109,8 +145,8 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.player.getCfu();
-			this.player.setCfu(cfu--);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu--);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
@@ -123,7 +159,7 @@ public class DiaDia {
 	}
 
 	public static void main(String[] argc) {
-		DiaDia gioco = new DiaDia();
+		DiaDia gioco = new DiaDia();				
 		gioco.gioca();
 	}
 }
