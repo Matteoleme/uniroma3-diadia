@@ -25,14 +25,6 @@ public class Partita {
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
 		this.player = new Giocatore("Luca");
 	}
-	
-	// Aggiunto per i test
-	public Partita(String mappa, String test){
-		this.mappa = new Labirinto(mappa, test);
-		this.finita = false;
-		this.player = new Giocatore("Luca");
-	}
-
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
@@ -50,7 +42,10 @@ public class Partita {
 		this.player.setNome(nomeGiocatore);;
 	}
 	
-
+	public Labirinto getLabirinto() {
+		return this.mappa;
+	}
+	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
