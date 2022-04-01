@@ -16,20 +16,20 @@ public class BorsaTest {
 	private Borsa tuttiAttrezzi;
 	private Borsa tantiAttrezzi;
 	private Borsa nienteAttrezzi;
-	private Borsa Rotta;
-	private Borsa Strana;
-	private Attrezzo Martello;
-	private Attrezzo Spada;
-	private Attrezzo Pistola;
-	private Attrezzo Chiave_Inglese;
-	private Attrezzo Scalpello;
-	private Attrezzo Corda;
-	private Attrezzo Piccone;
-	private Attrezzo Ascia;
-	private Attrezzo Sasso;
-	private Attrezzo Cacciavite;
+	private Borsa rotta;
+	private Borsa strana;
+	private Attrezzo martello;
+	private Attrezzo spada;
+	private Attrezzo pistola;
+	private Attrezzo chiave_Inglese;
+	private Attrezzo scalpello;
+	private Attrezzo corda;
+	private Attrezzo piccone;
+	private Attrezzo ascia;
+	private Attrezzo sasso;
+	private Attrezzo cacciavite;
 	
-	private Attrezzo Pala;
+	private Attrezzo pala;
 	 
 
 	@Before
@@ -38,75 +38,75 @@ public class BorsaTest {
 		tuttiAttrezzi = new Borsa(PESOGRANDE);			//sforo per numero di attrezzi
 		tantiAttrezzi = new Borsa(PESOMEDIO);			//sforo per peso attrezzi
 		nienteAttrezzi = new Borsa(PESOPICCOLO);		
-		Rotta = new Borsa(0);							
-		Strana = new Borsa();							
+		rotta = new Borsa(0);							
+		strana = new Borsa();							
 		
 		// setUp attrezzi
-		Martello = new Attrezzo("Martello", 10);
-		Spada = new Attrezzo("Spada", 7);
-		Pistola = new Attrezzo("Pistola", 5);
-		Chiave_Inglese = new Attrezzo("Chiave_Inglese", 5);
-		Scalpello = new Attrezzo("Scalpello", 2);
-		Corda = new Attrezzo("Corda", 2);
-		Piccone = new Attrezzo("Piccone", 7);
-		Ascia = new Attrezzo("Ascia", 6);
-		Sasso = new Attrezzo("Sasso", 1);
-		Cacciavite = new Attrezzo("Cacciavite", 3);
-		Pala = new Attrezzo("Pala", 3);
+		martello = new Attrezzo("Martello", 10);
+		spada = new Attrezzo("Spada", 7);
+		pistola = new Attrezzo("Pistola", 5);
+		chiave_Inglese = new Attrezzo("Chiave_Inglese", 5);
+		scalpello = new Attrezzo("Scalpello", 2);
+		corda = new Attrezzo("Corda", 2);
+		piccone = new Attrezzo("Piccone", 7);
+		ascia = new Attrezzo("Ascia", 6);
+		sasso = new Attrezzo("Sasso", 1);
+		cacciavite = new Attrezzo("Cacciavite", 3);
+		pala = new Attrezzo("Pala", 3);
 		//51 peso di tutti gli attrezzi
 		
-		this.tuttiAttrezzi.addAttrezzo(Martello);
-		this.tuttiAttrezzi.addAttrezzo(Spada);
-		this.tuttiAttrezzi.addAttrezzo(Pistola);
-		this.tuttiAttrezzi.addAttrezzo(Chiave_Inglese);
-		this.tuttiAttrezzi.addAttrezzo(Scalpello);
-		this.tuttiAttrezzi.addAttrezzo(Corda);
-		this.tuttiAttrezzi.addAttrezzo(Piccone);
-		this.tuttiAttrezzi.addAttrezzo(Ascia);
-		this.tuttiAttrezzi.addAttrezzo(Sasso);
-		this.tuttiAttrezzi.addAttrezzo(Cacciavite);
+		this.tuttiAttrezzi.addAttrezzo(martello);
+		this.tuttiAttrezzi.addAttrezzo(spada);
+		this.tuttiAttrezzi.addAttrezzo(pistola);
+		this.tuttiAttrezzi.addAttrezzo(chiave_Inglese);
+		this.tuttiAttrezzi.addAttrezzo(scalpello);
+		this.tuttiAttrezzi.addAttrezzo(corda);
+		this.tuttiAttrezzi.addAttrezzo(piccone);
+		this.tuttiAttrezzi.addAttrezzo(ascia);
+		this.tuttiAttrezzi.addAttrezzo(sasso);
+		this.tuttiAttrezzi.addAttrezzo(cacciavite);
 
-		this.tantiAttrezzi.addAttrezzo(Martello);
-		this.tantiAttrezzi.addAttrezzo(Spada);
-		this.tantiAttrezzi.addAttrezzo(Pistola);
-		this.tantiAttrezzi.addAttrezzo(Chiave_Inglese);
-		this.tantiAttrezzi.addAttrezzo(Scalpello);
-		this.tantiAttrezzi.addAttrezzo(Corda);
-		this.tantiAttrezzi.addAttrezzo(Piccone);
-		this.tantiAttrezzi.addAttrezzo(Ascia);
-		this.tantiAttrezzi.addAttrezzo(Cacciavite);
-		this.tantiAttrezzi.addAttrezzo(Pala);
+		this.tantiAttrezzi.addAttrezzo(martello);
+		this.tantiAttrezzi.addAttrezzo(spada);
+		this.tantiAttrezzi.addAttrezzo(pistola);
+		this.tantiAttrezzi.addAttrezzo(chiave_Inglese);
+		this.tantiAttrezzi.addAttrezzo(scalpello);
+		this.tantiAttrezzi.addAttrezzo(corda);
+		this.tantiAttrezzi.addAttrezzo(piccone);
+		this.tantiAttrezzi.addAttrezzo(ascia);
+		this.tantiAttrezzi.addAttrezzo(cacciavite);
+		this.tantiAttrezzi.addAttrezzo(pala);
 		
 	}
 
 	@Test
 	public void testAddAttrezzoArrayPieno() {
-		assertFalse(tuttiAttrezzi.addAttrezzo(Pala));
+		assertFalse(tuttiAttrezzi.addAttrezzo(pala));
 	}
 	
 	@Test
 	public void testAddAttrezzoBorsaPesante() {
-		assertFalse(tantiAttrezzi.addAttrezzo(Sasso));
+		assertFalse(tantiAttrezzi.addAttrezzo(sasso));
 	}
 	
 	@Test
 	public void testAddAttrezzoBorsaRotta() {
-		assertFalse(Rotta.addAttrezzo(Sasso));
+		assertFalse(rotta.addAttrezzo(sasso));
 	}
 	
 	@Test
 	public void testAddAttrezzoBorsaVuota() {
-		assertTrue(nienteAttrezzi.addAttrezzo(Ascia));
+		assertTrue(nienteAttrezzi.addAttrezzo(ascia));
 	}
 	
 	@Test
 	public void testAddAttrezzoBorsaStrana() {
-		assertTrue(Strana.addAttrezzo(Ascia));
+		assertTrue(strana.addAttrezzo(ascia));
 	}
 	
 	@Test
 	public void testGetAttrezzoTrue() {
-		assertEquals(Ascia, tuttiAttrezzi.getAttrezzo("Ascia"));
+		assertEquals(ascia, tuttiAttrezzi.getAttrezzo("Ascia"));
 	}
 	
 	@Test
@@ -126,7 +126,7 @@ public class BorsaTest {
 	
 	@Test
 	public void testGetPesoVuota() {
-		assertEquals(0, Rotta.getPeso());
+		assertEquals(0, rotta.getPeso());
 	}
 	
 	@Test
@@ -141,12 +141,12 @@ public class BorsaTest {
 	
 	@Test
 	public void testHasAttrezzoFalseVuota() {
-		assertFalse(Rotta.hasAttrezzo("Ascia"));
+		assertFalse(rotta.hasAttrezzo("Ascia"));
 	}
 	
 	@Test
 	public void testGetPesoDopoAggiunta() {
-		this.nienteAttrezzi.addAttrezzo(Corda);
+		this.nienteAttrezzi.addAttrezzo(corda);
 		assertEquals(2, nienteAttrezzi.getPeso());
 	}
 	
@@ -162,12 +162,12 @@ public class BorsaTest {
 	
 	@Test
 	public void testRemoveAttrezzo() {
-		assertEquals(Martello, tuttiAttrezzi.removeAttrezzo("Martello"));
+		assertEquals(martello, tuttiAttrezzi.removeAttrezzo("Martello"));
 	}
 	
 	@Test
 	public void testRemoveAttrezzoMaNonCeNiente() {
-		assertNull(Rotta.removeAttrezzo("Martello"));
+		assertNull(rotta.removeAttrezzo("Martello"));
 	}
 	
 	@Test

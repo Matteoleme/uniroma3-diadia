@@ -9,28 +9,28 @@ public class LabirintoTest {
 	
 	
 	private Labirinto vuoto;
-	private Labirinto Labirinto1;
-	private Labirinto Labirinto2;
+	private Labirinto labirinto1;
+	private Labirinto labirinto2;
 	
-	private Stanza Stanza1;
-	private Stanza Stanza2;
-	private Stanza Stanza3;
+	private Stanza stanza1;
+	private Stanza stanza2;
+	private Stanza stanza3;
 	
 	@Before
 	public void setUp(){
 		vuoto = new Labirinto("Bunker", "Test");
-		Labirinto1 = new Labirinto("Labirinto1", "Test");
-		Labirinto2 = new Labirinto("Labirinto2", "Test");
+		labirinto1 = new Labirinto("Labirinto1", "Test");
+		labirinto2 = new Labirinto("Labirinto2", "Test");
 		
-		Stanza1 = new Stanza("Stanza1");
-		Stanza2 = new Stanza("Stanza2"); 
-		Stanza3 = new Stanza("Stanza3"); 
+		stanza1 = new Stanza("Stanza1");
+		stanza2 = new Stanza("Stanza2"); 
+		stanza3 = new Stanza("Stanza3"); 
 		
-		Labirinto1.setStanzaIniziale(Stanza1);
-		Labirinto1.setStanzaVincente(Stanza2);
+		labirinto1.setStanzaIniziale(stanza1);
+		labirinto1.setStanzaVincente(stanza2);
 		
-		Labirinto2.setStanzaIniziale(Stanza3);
-		Labirinto2.setStanzaVincente(Stanza3);
+		labirinto2.setStanzaIniziale(stanza3);
+		labirinto2.setStanzaVincente(stanza3);
 	}
 
 	@Test
@@ -40,12 +40,12 @@ public class LabirintoTest {
 	
 	@Test
 	public void testSetStanzaVincenteDiversa() {
-		assertEquals(Stanza2, Labirinto1.getStanzaVincente());
+		assertEquals(stanza2, labirinto1.getStanzaVincente());
 	}
 	
 	@Test
 	public void testSetStanzaVincenteUguale() {
-		assertEquals(Stanza3, Labirinto2.getStanzaVincente());
+		assertEquals(stanza3, labirinto2.getStanzaVincente());
 	}
 
 	@Test
@@ -55,12 +55,12 @@ public class LabirintoTest {
 	
 	@Test
 	public void testSetStanzaInizialeDiversa() {
-		assertEquals(Stanza1, Labirinto1.getStanzaIniziale());
+		assertEquals(stanza1, labirinto1.getStanzaIniziale());
 	}
 	
 	@Test
 	public void testSetStanzaInizialeUguale() {
-		assertEquals(Stanza3, Labirinto2.getStanzaIniziale());
+		assertEquals(stanza3, labirinto2.getStanzaIniziale());
 	}
 	
 

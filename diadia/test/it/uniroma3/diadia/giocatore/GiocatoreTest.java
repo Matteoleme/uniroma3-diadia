@@ -7,30 +7,30 @@ import org.junit.Test;
 
 public class GiocatoreTest {
 	
-	private Giocatore SenzaBorsa;
-	private Giocatore ConBorsa;
-	private Borsa Busta;
-	private Borsa Zaino;
+	private Giocatore senzaBorsa;
+	private Giocatore conBorsa;
+	private Borsa busta;
+	private Borsa zaino;
 	
 	
 	
 	@Before
 	public void setUp() throws Exception {
-		SenzaBorsa = new Giocatore("Giovanni");
-		ConBorsa = new Giocatore("Mario");
-		Busta = new Borsa(1);
-		Zaino = new Borsa(10);
-		ConBorsa.setBorsa(Busta);
+		senzaBorsa = new Giocatore("Giovanni");
+		conBorsa = new Giocatore("Mario");
+		busta = new Borsa(1);
+		zaino = new Borsa(10);
+		conBorsa.setBorsa(busta);
 	}
 
 	@Test
 	public void testGetSenzaBorsa() {
-		assertNull(SenzaBorsa.getBorsa());
+		assertNull(senzaBorsa.getBorsa());
 	}
 	
 	@Test
 	public void testGetConBorsa() {
-		assertEquals(Busta, ConBorsa.getBorsa());
+		assertEquals(busta, conBorsa.getBorsa());
 	}
 
 }

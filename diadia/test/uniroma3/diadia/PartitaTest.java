@@ -15,9 +15,9 @@ public class PartitaTest {
 	private Partita partita;
 	private Partita partita2;
 	private Giocatore giocatore;
-	private Stanza StanzaVincente;
-	private Stanza StanzaCorrente;
-	private Stanza StanzaTest;
+	private Stanza stanzaVincente;
+	private Stanza stanzaCorrente;
+	private Stanza stanzaTest;
 	
 	@Before
 	public void setUpStanze() {
@@ -25,12 +25,12 @@ public class PartitaTest {
 		giocatore = new Giocatore("Manichino");
 		partita = new Partita("Test", "Test");
 		partita2 = new Partita("Test", "Test");		//Partita senza stanza corrente o vincente
-		StanzaVincente = new Stanza("StanzaVincente");
-		StanzaCorrente = new Stanza("StanzaCorrente");
-		StanzaTest = new Stanza("StanzaTest");
+		stanzaVincente = new Stanza("StanzaVincente");
+		stanzaCorrente = new Stanza("StanzaCorrente");
+		stanzaTest = new Stanza("StanzaTest");
 		
-		mappaProva.setStanzaIniziale(StanzaCorrente);
-		partita.setStanzaCorrente(StanzaCorrente);
+		mappaProva.setStanzaIniziale(stanzaCorrente);
+		partita.setStanzaCorrente(stanzaCorrente);
 	}
 
 	@Test
@@ -40,31 +40,31 @@ public class PartitaTest {
 	
 	@Test
 	public void testGetStanzaVincente() {
-		mappaProva.setStanzaVincente(StanzaVincente);
-		assertEquals(StanzaVincente, mappaProva.getStanzaVincente());
+		mappaProva.setStanzaVincente(stanzaVincente);
+		assertEquals(stanzaVincente, mappaProva.getStanzaVincente());
 	}
 	
 	@Test
 	public void testGetStanzaCorrenteAggiornato() {
-		partita.setStanzaCorrente(StanzaTest);
-		assertEquals(StanzaTest, partita.getStanzaCorrente());
+		partita.setStanzaCorrente(stanzaTest);
+		assertEquals(stanzaTest, partita.getStanzaCorrente());
 	}
 	
 	@Test
 	public void testGetStanzaVincenteAggiornato() {
-		mappaProva.setStanzaVincente(StanzaTest);
-		assertEquals(StanzaTest, mappaProva.getStanzaVincente());
+		mappaProva.setStanzaVincente(stanzaTest);
+		assertEquals(stanzaTest, mappaProva.getStanzaVincente());
 	}
 	
 	@Test
 	public void testVintaSenzaStanzaVincente() {
-		partita2.setStanzaCorrente(StanzaCorrente);
+		partita2.setStanzaCorrente(stanzaCorrente);
 		assertEquals(false, partita.vinta());
 	}
 	
 	@Test
 	public void testVintaSenzaStanzaCorrente() {
-		mappaProva.setStanzaVincente(StanzaVincente);
+		mappaProva.setStanzaVincente(stanzaVincente);
 		assertEquals(false, partita2.vinta());
 	}
 	
