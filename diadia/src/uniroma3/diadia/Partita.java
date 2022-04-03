@@ -22,9 +22,10 @@ public class Partita {
 	public Partita(String mappa){
 		this.mappa = new Labirinto(mappa);
 		this.finita = false;
-		this.stanzaCorrente = this.mappa.getStanzaIniziale();
 		this.player = new Giocatore("Luca");
+		this.stanzaCorrente = this.mappa.getStanzaIniziale();
 	}
+
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;

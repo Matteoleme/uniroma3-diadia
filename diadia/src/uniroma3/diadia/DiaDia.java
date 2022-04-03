@@ -42,8 +42,6 @@ public class DiaDia {
 		Scanner scannerDiLinee;
 
 		System.out.println(MESSAGGIO_BENVENUTO);
-		// Creazione del labirinto
-		this.partita.getLabirinto().getLabirintoFixture().creaStanzeUni();
 		// EDIT 31/03 aggiunta di un metodo per creare una nuova borsa
 		scannerDiLinee = new Scanner(System.in);
 		System.out.println("Crea una borsa prima! Quanti kg puoi portare?");

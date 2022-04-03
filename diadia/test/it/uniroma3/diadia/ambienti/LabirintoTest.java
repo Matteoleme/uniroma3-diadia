@@ -63,5 +63,21 @@ public class LabirintoTest {
 		assertEquals(stanza3, labirinto2.getStanzaIniziale());
 	}
 	
+	/*@Before
+	public void setUpEffettivo(){
+		mappa = new Labirinto("Mappa");
+		mappaFix = mappa.getLabirintoFixture();
+		mappaFix.creaStanzeUni();
+	}
+	
+	@Test
+	public void testGetStanzaVincenteEff() {
+		assertNotNull(mappa.getStanzaVincente());
+	}
+	
+	@Test
+	public void testGetStanzaInizialeEff() {
+		assertNotNull(mappa.getStanzaIniziale());
+	}*/
 
 }

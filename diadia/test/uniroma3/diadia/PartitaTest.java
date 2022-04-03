@@ -14,7 +14,6 @@ public class PartitaTest {
 	private Labirinto mappaProva;
 	private Partita partita;
 	private Partita partita2;
-	private Giocatore giocatore;
 	private Stanza stanzaVincente;
 	private Stanza stanzaCorrente;
 	private Stanza stanzaTest;
@@ -22,7 +21,7 @@ public class PartitaTest {
 	@Before
 	public void setUpStanze() {
 		mappaProva = new Labirinto("Test");
-		giocatore = new Giocatore("Manichino");
+		new Giocatore("Manichino");
 		partita = new Partita("Test");
 		partita2 = new Partita("Test");		//Partita senza stanza corrente o vincente
 		stanzaVincente = new Stanza("StanzaVincente");
@@ -73,4 +72,17 @@ public class PartitaTest {
 		assertEquals(false, partita2.vinta());
 	}
 
+	/*@Before
+	public void setUpStanzeEff() {
+		partitaEff = new Partita("Test");
+		mappa = partitaEff.getLabirinto();
+		mappaFix = mappa.getLabirintoFixture();
+		mappaFix.creaStanzeUni();
+	}
+	
+	@Test
+	public void testGetStanzaCorrenteEff() {
+		assertNotNull(partitaEff.getStanzaCorrente());
+	}*/
+	
 }
