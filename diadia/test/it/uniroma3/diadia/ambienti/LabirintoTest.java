@@ -18,9 +18,9 @@ public class LabirintoTest {
 	
 	@Before
 	public void setUp(){
-		vuoto = new Labirinto("Bunker");
-		labirinto1 = new Labirinto("Labirinto1");
-		labirinto2 = new Labirinto("Labirinto2");
+		vuoto = new Labirinto("Bunker", "Test");
+		labirinto1 = new Labirinto("Labirinto1", "Test");
+		labirinto2 = new Labirinto("Labirinto2", "Test");
 		
 		stanza1 = new Stanza("Stanza1");
 		stanza2 = new Stanza("Stanza2"); 

@@ -45,10 +45,10 @@ public class Stanza {
 	 * @param stanza    stanza adiacente nella direzione indicata dal primo
 	 *                  parametro.
 	 */
-	
+
 	// prova a risolvere il fatto che quando metto una stanza in una direzione
 	// l'adiacente deve essere nella posizione opposta
-	
+
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		boolean aggiornato = false;
 		// EDIT 25/03 risolto bug che permetteva di impostare una stanza adiacente a se
@@ -56,10 +56,8 @@ public class Stanza {
 		if (this.nome != stanza.nome) {
 			// EDIT 25/03 risolto bug che impostava stessa stanza in due direzioni diverse
 			for (int i = 0; i < this.numeroStanzeAdiacenti; i++)
-				if (this.stanzeAdiacenti[i].equals(stanza)) { // controllo se gia' presente
-					System.out.println("Stanza gia' presente");
+				if (this.stanzeAdiacenti[i].equals(stanza)) // controllo se gia' presente
 					aggiornato = true;
-				}
 			// ciclo che scorre le direzioni della stanza corrente
 			// e controlla se la direzione presa in input era gia' stata messa
 			if (!aggiornato)
@@ -74,9 +72,8 @@ public class Stanza {
 					this.stanzeAdiacenti[numeroStanzeAdiacenti] = stanza;
 					this.numeroStanzeAdiacenti++;
 				}
-		} else {
-			System.out.println("Non posso impostare una stanza adiacente a se stessa");
-		}
+		} else
+			return; // caso in cui c'e' una stanza adiacente a se stessa
 	}
 
 	/**
@@ -153,7 +150,8 @@ public class Stanza {
 		 * EDIT 16/03 Cambio for per evitare di andare in NULL In questa soluzione mi
 		 * fermo a numeroAttrezzi
 		 */
-		if (numeroAttrezzi != 0) // Aggiunto if per stampare che non ci sono attrezzi in una stanza senza attrezzi
+		if (numeroAttrezzi != 0) // Aggiunto if per stampare che non ci sono attrezzi in una stanza senza
+									// attrezzi
 			for (int i = 0; i < numeroAttrezzi; i++)
 				risultato.append(attrezzi[i].toString() + " ");
 		else
@@ -170,12 +168,13 @@ public class Stanza {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		boolean trovato;
 		trovato = false;
-		// EDIT 26/03 Aggiungo controllo preventivo: se la stanza non ha nemmeno un attrezzo
+		// EDIT 26/03 Aggiungo controllo preventivo: se la stanza non ha nemmeno un
+		// attrezzo
 		// e' inutile che cerco
 		if (this.numeroAttrezzi != 0) {
-			//EDIT 30/03 cambio il for per un errore che mi da nei test
-			//di removeAttrezzo
-			for (int i=0; i<numeroAttrezzi; i++) {
+			// EDIT 30/03 cambio il for per un errore che mi da nei test
+			// di removeAttrezzo
+			for (int i = 0; i < numeroAttrezzi; i++) {
 				if (attrezzi[i].getNome().equals(nomeAttrezzo))
 					trovato = true;
 			}
@@ -189,12 +188,12 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return l'attrezzo presente nella stanza. null se l'attrezzo non e' presente.
 	 */
-	
+
 	// EDIT 31/03 Cambio ciclo for perche da un errore
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
-		for (int i=0; i<this.numeroAttrezzi; i++) {
+		for (int i = 0; i < this.numeroAttrezzi; i++) {
 			if (attrezzi[i].getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzi[i];
 		}
@@ -207,29 +206,30 @@ public class Stanza {
 	 * @param nomeAttrezzo
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
-	
-	//EDIT 30/03 aggiunta metodo removeAttrezzo
+
+	// EDIT 30/03 aggiunta metodo removeAttrezzo
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		if(!hasAttrezzo(attrezzo.getNome()) || this.numeroAttrezzi==0) return false;
+		if (!hasAttrezzo(attrezzo.getNome()) || this.numeroAttrezzi == 0)
+			return false;
 		// se mi trovo qui vuol dire che l'attrezzo c'e'
-		for(int i=0; i<this.numeroAttrezzi; i++) {
-			if(attrezzo.equals(this.attrezzi[i])) {
+		for (int i = 0; i < this.numeroAttrezzi; i++) {
+			if (attrezzo.equals(this.attrezzi[i])) {
 				// ho trovato quello da rimuovere
 				this.numeroAttrezzi--;
-				if(numeroAttrezzi!=0 || numeroAttrezzi==NUMERO_MASSIMO_ATTREZZI)	
+				if (numeroAttrezzi != 0 || numeroAttrezzi == NUMERO_MASSIMO_ATTREZZI)
 					this.attrezzi[i] = this.attrezzi[numeroAttrezzi];
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Controlla quante direzioni ha una stanza.
 	 * 
 	 * @return un array di Stringhe delle direzioni della stanza
 	 */
-	
+
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 		for (int i = 0; i < this.numeroStanzeAdiacenti; i++)

@@ -25,6 +25,13 @@ public class Partita {
 		this.player = new Giocatore("Luca");
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
 	}
+	
+	public Partita(String mappa, String test){
+		this.mappa = new Labirinto(mappa, "Test");
+		this.finita = false;
+		this.player = new Giocatore("Luca");
+		this.stanzaCorrente = this.mappa.getStanzaIniziale();
+	}
 
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
