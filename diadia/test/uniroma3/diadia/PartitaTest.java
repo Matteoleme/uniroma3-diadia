@@ -17,13 +17,15 @@ public class PartitaTest {
 	private Stanza stanzaVincente;
 	private Stanza stanzaCorrente;
 	private Stanza stanzaTest;
+	private IOConsole io;
 	
 	@Before
 	public void setUpStanze() {
+		io = new IOConsole();
 		mappaProva = new Labirinto("Test", "Test");
 		new Giocatore("Manichino");
-		partita = new Partita("Test", "Test");
-		partita2 = new Partita("Test", "Test");		//Partita senza stanza corrente o vincente
+		partita = new Partita("Test", "Test", io);
+		partita2 = new Partita("Test", "Test", io);		//Partita senza stanza corrente o vincente
 		stanzaVincente = new Stanza("StanzaVincente");
 		stanzaCorrente = new Stanza("StanzaCorrente");
 		stanzaTest = new Stanza("StanzaTest");

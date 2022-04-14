@@ -28,11 +28,12 @@ public class Partita {
 		this.io = io;
 	}
 	
-	public Partita(String mappa, String test){
+	public Partita(String mappa, String test, IOConsole io){
 		this.mappa = new Labirinto(mappa, "Test");
 		this.finita = false;
 		this.player = new Giocatore("Luca");
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
+		this.io = io;
 	}
 
 
