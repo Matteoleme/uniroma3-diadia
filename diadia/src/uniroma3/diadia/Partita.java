@@ -18,12 +18,14 @@ public class Partita {
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	private Giocatore player;
+	private IOConsole io;
 	
-	public Partita(String mappa){
+	public Partita(String mappa, IOConsole io){
 		this.mappa = new Labirinto(mappa);
 		this.finita = false;
 		this.player = new Giocatore("Luca");
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
+		this.io = io;
 	}
 	
 	public Partita(String mappa, String test){
@@ -83,6 +85,10 @@ public class Partita {
 	 */
 	public void setFinita() {
 		this.finita = true;
+	}
+
+	public IOConsole getIO() {
+		return io;
 	}
 
 }
