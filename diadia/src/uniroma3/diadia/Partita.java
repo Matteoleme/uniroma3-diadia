@@ -20,20 +20,20 @@ public class Partita {
 	private Giocatore player;
 	private IOConsole io;
 	
-	public Partita(String mappa, IOConsole io){
+	public Partita(String mappa, IO io){
 		this.mappa = new Labirinto(mappa);
 		this.finita = false;
 		this.player = new Giocatore("Luca");
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
-		this.io = io;
+		this.io = (IOConsole) io;
 	}
 	
-	public Partita(String mappa, String test, IOConsole io){
+	public Partita(String mappa, String test, IO io){
 		this.mappa = new Labirinto(mappa, "Test");
 		this.finita = false;
 		this.player = new Giocatore("Luca");
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
-		this.io = io;
+		this.io = (IOConsole) io;
 	}
 
 
