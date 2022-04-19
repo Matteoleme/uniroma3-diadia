@@ -11,8 +11,8 @@ public class ComandoGuarda implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		IOConsole io = partita.getIO();
-		io.mostraMessaggio(partita.getStanzaCorrente().toString());	//stampa stanza corrente
-		io.mostraMessaggioACapo("Cfu attuali" + partita.getGiocatore().getCfu());	//stampo cfu attuali
+		io.mostraMessaggioACapo(partita.getStanzaCorrente().toString());	//stampa stanza corrente
+		io.mostraMessaggioACapo("Cfu attuali " + partita.getGiocatore().getCfu());	//stampo cfu attuali
 	}
 
 	@Override
