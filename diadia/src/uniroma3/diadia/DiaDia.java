@@ -1,7 +1,7 @@
 package uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandoFisarmonica;
 import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
@@ -28,7 +28,7 @@ public class DiaDia {
 			+ "Per conoscere le istruzioni usa il comando 'aiuto'.";
 
 	private Partita partita;
-	private IOConsole io;
+	private IO io;
 
 	public DiaDia(IOConsole io) {
 		this.partita = new Partita("Universita'", io);
@@ -46,7 +46,7 @@ public class DiaDia {
 		io.mostraMessaggioACapo("Ti trovi in:" + partita.getStanzaCorrente().getDescrizione());
 		do
 			istruzione = this.io.leggiRiga();
-		while (!processaIstruzione(istruzione));
+		while (processaIstruzione(istruzione));
 	}
 
 	/**
@@ -56,27 +56,16 @@ public class DiaDia {
 	 *         altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
+		FabbricaDiComandoFisarmonica istr = new FabbricaDiComandoFisarmonica();
 
-		/*
-		 * EDIT 17/03 Risolvo il caso in cui l'utente non scriva nulla e digiti
-		 * solamente invio
-		 */
+		Comando comando = istr.costruisciComando(istruzione);
 
-		/*
-		 * if (comandoDaEseguire.getNome() == null) { this.aiuto(); return false; } if
-		 * (comandoDaEseguire.getNome().equals("fine")) { this.fine(); return true; }
-		 * else if (comandoDaEseguire.getNome().equals("vai"))
-		 * this.vai(comandoDaEseguire.getParametro()); else if
-		 * (comandoDaEseguire.getNome().equals("aiuto")) this.aiuto(); else if
-		 * (comandoDaEseguire.getNome().equals("prendi"))
-		 * this.prendi(comandoDaEseguire.getParametro()); else if
-		 * (comandoDaEseguire.getNome().equals("posa"))
-		 * this.posa(comandoDaEseguire.getParametro()); else
-		 * io.mostraMessaggioACapo("Comando sconosciuto"); if (this.partita.vinta()) {
-		 * io.mostraMessaggioACapo("Hai vinto!"); return true; } else return false;
-		 */
-		return false;			// da eliminare
+		comando.esegui(this.partita);			// questo esegui si comportera' in base al tipo DINAMICO del comando
+		if (this.partita.vinta()) {
+			io.mostraMessaggioACapo("Hai vinto!");
+			return false;
+		}
+		return true;
 	}
 
 	// implementazioni dei comandi dell'utente:
