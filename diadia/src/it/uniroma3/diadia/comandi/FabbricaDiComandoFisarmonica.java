@@ -2,6 +2,12 @@ package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
 
+/* *
+ * Questa classe tampone perche' in futuro verra' migliorato questo comportamento
+ * restituisce una variabile di tipo statico Comando e di tipo dinamico il comando scelto
+ * in base all'istruzione impartita
+ */
+
 public class FabbricaDiComandoFisarmonica implements FabbricaDiComandi {
 
 	@Override
@@ -10,12 +16,12 @@ public class FabbricaDiComandoFisarmonica implements FabbricaDiComandi {
 		String nomeComando = null;
 		String parametro = null;
 		Comando comando = null;
-		
+
 		if (scannerDiParole.hasNext())
 			nomeComando = scannerDiParole.next(); // prima parola: nome del comando
 		if (scannerDiParole.hasNext())
 			parametro = scannerDiParole.next(); // seconda parola: eventuale parametro
-		
+
 		if (nomeComando == null)
 			comando = new ComandoNonValido();
 		else if (nomeComando.equals("vai"))
@@ -28,9 +34,8 @@ public class FabbricaDiComandoFisarmonica implements FabbricaDiComandi {
 			comando = new ComandoAiuto();
 		else if (nomeComando.equals("fine"))
 			comando = new ComandoFine();
-		/*
-		 * else if (nomeComando.equals("guarda")) comando = new ComandoGuarda();
-		 */
+		else if (nomeComando.equals("guarda"))
+			comando = new ComandoGuarda();
 		else
 			comando = new ComandoNonValido();
 		comando.setParametro(parametro);
