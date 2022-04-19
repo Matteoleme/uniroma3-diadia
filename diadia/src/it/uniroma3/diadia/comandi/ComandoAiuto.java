@@ -1,6 +1,6 @@
 package it.uniroma3.diadia.comandi;
 
-import uniroma3.diadia.IOConsole;
+import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
 public class ComandoAiuto implements Comando {
@@ -14,7 +14,7 @@ public class ComandoAiuto implements Comando {
 	 */
 	@Override
 	public void esegui(Partita partita) {
-		IOConsole io = partita.getIO();
+		IO io = partita.getIO();
 		for (int i = 0; i < elencoComandi.length; i++) {
 			io.mostraMessaggio(elencoComandi[i] + " ");
 			if (i == 0)

@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.giocatore.Borsa;
-import uniroma3.diadia.IOConsole;
+import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
 public class ComandoPosa implements Comando {
@@ -12,7 +12,7 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		Borsa borsa = partita.getGiocatore().getBorsa();
-		IOConsole io = partita.getIO();
+		IO io = partita.getIO();
 		if (borsa.hasAttrezzo(nomeAttrezzo)) {
 			if (partita.getStanzaCorrente().addAttrezzo(borsa.getAttrezzo(nomeAttrezzo))) {
 				borsa.removeAttrezzo(nomeAttrezzo);

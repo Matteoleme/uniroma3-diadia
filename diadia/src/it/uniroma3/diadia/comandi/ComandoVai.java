@@ -1,7 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-import uniroma3.diadia.IOConsole;
+import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
 public class ComandoVai implements Comando {
@@ -16,7 +16,7 @@ public class ComandoVai implements Comando {
 	 */
 	@Override
 	public void esegui(Partita partita) {
-		IOConsole io = partita.getIO();
+		IO io = partita.getIO();
 		if (this.direzione == null) {
 			io.mostraMessaggioACapo("Dove vuoi andare ?");
 			return;
