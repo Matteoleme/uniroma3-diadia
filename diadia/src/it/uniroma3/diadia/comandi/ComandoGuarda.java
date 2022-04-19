@@ -4,7 +4,8 @@ import uniroma3.diadia.IOConsole;
 import uniroma3.diadia.Partita;
 
 public class ComandoGuarda implements Comando {
-
+	
+	static final private String NOME = "Guarda";
 	/**
 	 * stampa le informazioni sulla stanza corrente e sullo stato della partita
 	 */
@@ -17,8 +18,18 @@ public class ComandoGuarda implements Comando {
 
 	@Override
 	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
+		// niente
 
+	}
+
+	@Override
+	public String getNome() {
+		return NOME;
+	}
+
+	@Override
+	public String getParametro() {
+		return null;
 	}
 
 }

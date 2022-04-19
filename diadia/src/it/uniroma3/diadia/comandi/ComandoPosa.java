@@ -6,6 +6,7 @@ import uniroma3.diadia.Partita;
 
 public class ComandoPosa implements Comando {
 
+	static final private String NOME = "Posa";
 	private String nomeAttrezzo;
 
 	@Override
@@ -26,6 +27,16 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		this.nomeAttrezzo = parametro;
+	}
+
+	@Override
+	public String getNome() {
+		return NOME;
+	}
+
+	@Override
+	public String getParametro() {
+		return this.nomeAttrezzo;
 	}
 
 }

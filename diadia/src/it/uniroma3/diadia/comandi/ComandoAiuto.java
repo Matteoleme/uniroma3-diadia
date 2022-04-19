@@ -8,6 +8,7 @@ public class ComandoAiuto implements Comando {
 
 	static final private String[] elencoComandi = { "vai", "aiuto", "fine",
 			"prendi", "posa" };
+	static final private String NOME = "Aiuto";
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
@@ -26,6 +27,16 @@ public class ComandoAiuto implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		//niente
+	}
+
+	@Override
+	public String getNome() {
+		return NOME;
+	}
+
+	@Override
+	public String getParametro() {
+		return null;
 	}
 
 }

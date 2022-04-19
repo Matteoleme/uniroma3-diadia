@@ -5,6 +5,9 @@ import uniroma3.diadia.IOConsole;
 import uniroma3.diadia.Partita;
 
 public class ComandoVai implements Comando {
+	
+	static final private String NOME = "Vai";
+	
 	private String direzione;
 
 	/**
@@ -32,6 +35,16 @@ public class ComandoVai implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		this.direzione = parametro;
+	}
+
+	@Override
+	public String getNome() {
+		return NOME;
+	}
+
+	@Override
+	public String getParametro() {
+		return this.direzione;
 	}
 
 }
