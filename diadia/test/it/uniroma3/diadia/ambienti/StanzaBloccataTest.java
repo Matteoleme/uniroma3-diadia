@@ -12,7 +12,7 @@ public class StanzaBloccataTest {
 	private Stanza normale1;
 	private Stanza normale2;
 	private StanzaBloccata bloccata;
-	private StanzaBloccata pazza;
+	private StanzaBloccata pazza;				//stanza bloccata che in realta non ha stanze adicenti in quella posizione
 	private Attrezzo chiave;
 
 	@Before
@@ -20,6 +20,7 @@ public class StanzaBloccataTest {
 		normale1 = new Stanza("normale1");
 		normale2 = new Stanza("normale2");
 		bloccata = new StanzaBloccata("bloccata", "nord");
+		pazza = new StanzaBloccata("stanza pazza", "sud");
 		chiave = new Attrezzo("chiave", 1);
 		
 		normale1.impostaStanzaAdiacente("sud", bloccata);
@@ -78,5 +79,18 @@ public class StanzaBloccataTest {
 		bloccata.removeAttrezzo(chiave);
 		assertEquals(bloccata, bloccata.getStanzaAdiacente("nord"));
 	}
+	
+	@Test
+	public void testGetStanzaAdiacenteStanzaPazzaSenzaChiave() {
+		assertEquals(pazza, pazza.getStanzaAdiacente("sud"));
+	}
+	
+	@Test
+	public void testGetStanzaAdiacenteStanzaPazzaConChiave() {
+		pazza.addAttrezzo(chiave);
+		assertNull(pazza.getStanzaAdiacente("sud"));
+	}
+	
+	
 	
 }
