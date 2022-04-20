@@ -20,7 +20,7 @@ public class StanzaBloccataTest {
 		normale1 = new Stanza("normale1");
 		normale2 = new Stanza("normale2");
 		bloccata = new StanzaBloccata("bloccata", "nord");
-		pazza = new StanzaBloccata("stanza pazza", "sud");
+		pazza = new StanzaBloccata("stanza pazza", "sud", "spranga");
 		chiave = new Attrezzo("chiave", 1);
 		
 		normale1.impostaStanzaAdiacente("sud", bloccata);
@@ -87,7 +87,8 @@ public class StanzaBloccataTest {
 	
 	@Test
 	public void testGetStanzaAdiacenteStanzaPazzaConChiave() {
-		pazza.addAttrezzo(chiave);
+		Attrezzo spranga = new Attrezzo("spranga", 5);
+		pazza.addAttrezzo(spranga);
 		assertNull(pazza.getStanzaAdiacente("sud"));
 	}
 	
