@@ -27,9 +27,8 @@ public class StanzaBloccata extends Stanza {
 
 	@Override
 	public Stanza getStanzaAdiacente(String dir) {
-		if (dir == direzioneBloccata && !this.hasAttrezzo(sbloccaStanza)) {
+		if (dir == direzioneBloccata && !this.hasAttrezzo(sbloccaStanza))
 			return this;
-		}
 		return super.getStanzaAdiacente(dir);
 	}
 
@@ -46,19 +45,17 @@ public class StanzaBloccata extends Stanza {
 		for (String direzione : this.getDirezioni())
 			if (direzione != null)
 				if (direzione == this.direzioneBloccata)
-					risultato.append(" " + direzione + " <= (Bloccata!)\n");
+					risultato.append(" " + direzione + " <= (Bloccata!)  ");
 				else
 					risultato.append(" " + direzione);
 		risultato.append("\nAttrezzi nella stanza: ");
 		if (this.getNumeroAttrezzi() != 0) {
 			Attrezzo[] attrezzi = this.getAttrezzi();
-			for (int i = 0; i < this.getNumeroAttrezzi(); i++) {
+			for (int i = 0; i < this.getNumeroAttrezzi(); i++)
 				if (attrezzi[i].getNome() == this.sbloccaStanza)
-					risultato.append(attrezzi[i].toString() +
-							" Può essere usato per sbloccare una stanza\n");
+					risultato.append(attrezzi[i].toString() + " può essere usato per sbloccare una stanza  ");
 				else
 					risultato.append(attrezzi[i].toString() + " ");
-			}
 		} else
 			risultato.append("nessuno"); // se non ci sono attrezzi
 
