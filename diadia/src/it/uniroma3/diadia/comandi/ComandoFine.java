@@ -4,13 +4,14 @@ import uniroma3.diadia.Partita;
 
 public class ComandoFine implements Comando {
 	
-	static final private String NOME = "Fine";
+	static final public String NOME = "fine";
+	static final public String MESSAGGIO_FINE = "Grazie di aver giocato!";
 	/**
 	 * Comando "Fine".
 	 */
 	@Override
 	public void esegui(Partita partita) {
-		partita.getIO().mostraMessaggioACapo("Grazie di aver giocato!"); // si desidera smettere
+		partita.getIO().mostraMessaggioACapo(MESSAGGIO_FINE); // si desidera smettere
 	}
 
 	@Override

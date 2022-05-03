@@ -5,7 +5,7 @@ import uniroma3.diadia.Partita;
 
 public class ComandoGuarda implements Comando {
 	
-	static final private String NOME = "Guarda";
+	static final public String NOME = "guarda";
 	/**
 	 * stampa le informazioni sulla stanza corrente e sullo stato della partita
 	 */

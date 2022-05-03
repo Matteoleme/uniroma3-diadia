@@ -8,7 +8,7 @@ public class ComandoAiuto implements Comando {
 
 	static final private String[] elencoComandi = { "vai", "aiuto", "fine",
 			"prendi", "posa" };
-	static final private String NOME = "Aiuto";
+	static final public String NOME = "aiuto";
 	/**
 	 * Stampa informazioni di aiuto.
 	 */

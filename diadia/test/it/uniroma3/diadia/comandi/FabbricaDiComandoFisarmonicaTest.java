@@ -44,7 +44,7 @@ public class FabbricaDiComandoFisarmonicaTest {
 	@Test
 	public void testComandoCheNonHaParametroConParametro() {
 		tuttoIlComando = "guarda qui";
-		assertEquals("Guarda", fab.costruisciComando(tuttoIlComando).getNome());
+		assertEquals("guarda", fab.costruisciComando(tuttoIlComando).getNome());
 	}
 	
 	@Test
