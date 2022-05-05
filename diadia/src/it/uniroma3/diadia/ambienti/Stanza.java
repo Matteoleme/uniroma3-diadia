@@ -17,8 +17,6 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Stanza {
 
-	// static final private int NUMERO_MASSIMO_ATTREZZI = 10; elimina
-
 	private Map<String, Attrezzo> attrezzi;
 	private Map<String, Stanza> stanzeAdiacenti;
 	private String nome;
