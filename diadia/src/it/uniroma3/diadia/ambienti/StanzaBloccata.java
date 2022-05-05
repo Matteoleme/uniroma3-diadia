@@ -1,7 +1,5 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.attrezzi.Attrezzo;
-
 /**
  * La «stanza bloccata»: una delle direzioni della stanza non può essere seguita
  * a meno che nella stanza non sia presente un oggetto con un nome particolare
