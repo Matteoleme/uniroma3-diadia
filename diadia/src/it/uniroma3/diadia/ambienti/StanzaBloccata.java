@@ -39,27 +39,14 @@ public class StanzaBloccata extends Stanza {
 
 	@Override
 	public String toString() {
-		StringBuilder risultato = new StringBuilder();
-		risultato.append(this.getNome());
-		risultato.append("\nUscite: ");
-		for (String direzione : this.getDirezioni())
-			if (direzione != null)
-				if (direzione == this.direzioneBloccata)
-					risultato.append(" " + direzione + " <= (Bloccata!)  ");
-				else
-					risultato.append(" " + direzione);
-		risultato.append("\nAttrezzi nella stanza: ");
-		if (this.getNumeroAttrezzi() != 0) {
-			Attrezzo[] attrezzi = this.getAttrezzi();
-			for (int i = 0; i < this.getNumeroAttrezzi(); i++)
-				if (attrezzi[i].getNome() == this.sbloccaStanza)
-					risultato.append(attrezzi[i].toString() + " può essere usato per sbloccare una stanza  ");
-				else
-					risultato.append(attrezzi[i].toString() + " ");
-		} else
-			risultato.append("nessuno"); // se non ci sono attrezzi
+		String stampa = "\nDirezione bloccata: " + this.direzioneBloccata + 
+				"\nServirebbe una " + this.sbloccaStanza + "...";
+		return super.toString() + stampa;
+	}
 
-		return risultato.toString();
+	// da testare
+	public boolean hasSbloccaStanza() {
+		return super.getAttrezzi().containsKey(sbloccaStanza);
 	}
 
 }

@@ -24,7 +24,7 @@ public class StanzaBuia extends Stanza {
 		if (this.hasAttrezzo(nomeAttrezzoLucente)) {
 			return super.getDescrizione();
 		}
-		return "Qui c'è buio pesto";
+		return "Qui c'è buio pesto\n";
 	}
 
 	public String getNomeAttrezzoLucente() {
