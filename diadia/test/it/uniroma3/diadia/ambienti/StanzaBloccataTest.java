@@ -92,6 +92,13 @@ public class StanzaBloccataTest {
 		assertNull(pazza.getStanzaAdiacente("sud"));
 	}
 	
+	@Test
+	public void testStampa() {
+		System.out.println(this.bloccata.getDescrizione());
+		bloccata.addAttrezzo(chiave);
+		System.out.println(this.bloccata.getDescrizione());
+	}
+	
 	
 	
 }

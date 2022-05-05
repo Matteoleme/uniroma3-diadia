@@ -9,7 +9,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaBuiaTest {
 	
-	private static final String MESSAGGIO = "Qui c'è buio pesto";
+	private static final String MESSAGGIO = "Qui c'è buio pesto\n";
 	private StanzaBuia buia;
 	private Attrezzo lanterna;
 	
@@ -53,4 +53,10 @@ public class StanzaBuiaTest {
 		assertEquals(generica, buia.getStanzaAdiacente("nord"));
 	}
 	
+	@Test
+	public void testStampa() {
+		System.out.print(buia.getDescrizione());
+		buia.addAttrezzo(lanterna);
+		System.out.print(buia.getDescrizione());
+	}
 }
