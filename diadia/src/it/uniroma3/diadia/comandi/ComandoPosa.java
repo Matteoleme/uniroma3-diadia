@@ -14,12 +14,11 @@ public class ComandoPosa implements Comando {
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		IO io = partita.getIO();
 		if (borsa.hasAttrezzo(nomeAttrezzo)) {
-			if (partita.getStanzaCorrente().addAttrezzo(borsa.getAttrezzo(nomeAttrezzo))) {
-				borsa.removeAttrezzo(nomeAttrezzo);
-				io.mostraMessaggioACapo(nomeAttrezzo + " posato");
-				return;
-			} else
-				io.mostraMessaggioACapo("Stanza piena non e' possibile mettere altri attrezzi");
+			partita.getStanzaCorrente().addAttrezzo(borsa.getAttrezzo(nomeAttrezzo));
+			borsa.removeAttrezzo(nomeAttrezzo);
+			io.mostraMessaggioACapo(nomeAttrezzo + " posato");
+			return;
+
 		} else
 			io.mostraMessaggioACapo(nomeAttrezzo + " non presente");
 	}
