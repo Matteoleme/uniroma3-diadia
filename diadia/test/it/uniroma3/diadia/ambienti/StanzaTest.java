@@ -2,16 +2,17 @@ package it.uniroma3.diadia.ambienti;
 
 import static org.junit.Assert.*;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-
-
 public class StanzaTest {
-	
-	
+
 	// stanze per il test di metodo ImpostaStanzaAdiacente
 	private Stanza noAdiacenti;
 	private Stanza tuttiAdiacenti;
@@ -20,12 +21,12 @@ public class StanzaTest {
 	private Stanza stanza3;
 	private Stanza stanza4;
 	private Stanza stanzaInPiu;
-	
+
 	// stanze per il test di metodo AddAttrezzo
-	private Stanza noAttrezzi;		
+	private Stanza noAttrezzi;
 	private Stanza tuttiAttrezzi;
 	private Stanza unAttrezzo;
-	
+
 	private Attrezzo martello;
 	private Attrezzo spada;
 	private Attrezzo pistola;
@@ -37,9 +38,7 @@ public class StanzaTest {
 	private Attrezzo sasso;
 	private Attrezzo cacciavite;
 	private Attrezzo pala;
-	
-	
-	
+
 	@Before
 	public void setUpStanzaAdiacente() {
 		this.noAdiacenti = new Stanza("Cella");
@@ -49,33 +48,32 @@ public class StanzaTest {
 		this.stanza3 = new Stanza("Stanza3");
 		this.stanza4 = new Stanza("Stanza4");
 		this.stanzaInPiu = new Stanza("StanzaInPiu");
-		
+
 		// metto la stessa stanza in due direzioni diverse
 		this.tuttiAdiacenti.impostaStanzaAdiacente("nord", stanza1);
-		this.tuttiAdiacenti.impostaStanzaAdiacente("sud", stanza1);
 
-		// aggiungo me stesso come stanza adiacente
-		this.tuttiAdiacenti.impostaStanzaAdiacente("sud", tuttiAdiacenti);
-		
 		// riempio tutti i campi stanza adiacente
 		this.tuttiAdiacenti.impostaStanzaAdiacente("sud", stanza2);
 		this.tuttiAdiacenti.impostaStanzaAdiacente("est", stanza3);
 		this.tuttiAdiacenti.impostaStanzaAdiacente("ovest", stanza4);
-		
+
 	}
 
 	// Metto la stessa stanza in due posizioni diverse e deve rimanere il primo dei
 	// due che ho messo
 	@Test
 	public void testImpostaStessaStanzaAdiacenteInPosizioneDiversa() {
-		assertEquals(stanza1, tuttiAdiacenti.getStanzaAdiacente("nord"));
+		this.tuttiAdiacenti.impostaStanzaAdiacente("sud", stanza1);
+		assertEquals(stanza2, tuttiAdiacenti.getStanzaAdiacente("sud"));
 	}
-	
+
 	@Test
 	public void testImpostaStessaStanzaAdiacente() {
+		// aggiungo me stesso come stanza adiacente
+		this.tuttiAdiacenti.impostaStanzaAdiacente("sud", tuttiAdiacenti);
 		assertNotSame(tuttiAdiacenti, tuttiAdiacenti.getStanzaAdiacente("sud"));
 	}
-	
+
 	@Test
 	public void testImpostaNuovaAdiacente() {
 		// aggiungo una stanza in piu' e dovrebbe essere sovrascritta
@@ -87,26 +85,34 @@ public class StanzaTest {
 	public void testImpostaStanzaAdiacenteVuota() {
 		assertNull(noAdiacenti.getStanzaAdiacente("sud"));
 	}
-	
-	@Test
-	public void testGetDirezioniTotali() {
-		String[] direzioni = {"nord", "sud", "est", "ovest"};
-		assertArrayEquals(direzioni, this.tuttiAdiacenti.getDirezioni());
-	}
-	
+
 	@Test
 	public void testGetNessunaDirezione() {
-		String[] direzioniVuoto = new String[0];
-		assertArrayEquals(direzioniVuoto, noAdiacenti.getDirezioni());
+		assertEquals(Collections.emptyMap(), noAdiacenti.getDirezioni());
 	}
-	
-	
+
+	@Test
+	public void testGetDirezioniTotali() {
+		Map<String, Stanza> direzioni = new HashMap<>();
+		direzioni.put("nord", stanza1);
+		direzioni.put("sud", stanza2);
+		direzioni.put("est", stanza3);
+		direzioni.put("ovest", stanza4);
+		assertEquals(direzioni, this.tuttiAdiacenti.getDirezioni());
+	}
+
+	@Test
+	public void testStampeDirezioni() {
+		System.out.println(this.tuttiAdiacenti.getDescrizione());
+		System.out.println(this.noAdiacenti.getDescrizione());
+	}
+
 	@Before
 	public void setUpAttrezzi() {
-		this.noAttrezzi = new Stanza("Bagno");		
-		this.unAttrezzo = new Stanza("Camera da letto");		
+		this.noAttrezzi = new Stanza("Bagno");
+		this.unAttrezzo = new Stanza("Camera da letto");
 		this.tuttiAttrezzi = new Stanza("Cucina");
-		
+
 		martello = new Attrezzo("Martello", 10);
 		spada = new Attrezzo("Spada", 7);
 		pistola = new Attrezzo("Pistola", 5);
@@ -118,7 +124,7 @@ public class StanzaTest {
 		sasso = new Attrezzo("Sasso", 1);
 		cacciavite = new Attrezzo("Cacciavite", 3);
 		pala = new Attrezzo("Pala", 3);
-		
+
 		this.tuttiAttrezzi.addAttrezzo(martello);
 		this.tuttiAttrezzi.addAttrezzo(spada);
 		this.tuttiAttrezzi.addAttrezzo(pistola);
@@ -129,74 +135,79 @@ public class StanzaTest {
 		this.tuttiAttrezzi.addAttrezzo(ascia);
 		this.tuttiAttrezzi.addAttrezzo(sasso);
 		this.tuttiAttrezzi.addAttrezzo(cacciavite);
-		
+
 		this.unAttrezzo.addAttrezzo(pala);
-		
-}
-	
-	
-	@Test
-	public void testGetAttrezzo() {
-		Attrezzo[] arrayAttrezzi = {martello, spada, pistola, chiave_Inglese, scalpello, 
-			corda, piccone, ascia, sasso, cacciavite};
-		assertArrayEquals(arrayAttrezzi, tuttiAttrezzi.getAttrezzi());
 	}
-	
+
+	@Test
+	public void testGetAttrezzoStanzaConUnAttrezzo() {
+		Map<String, Attrezzo> test = new HashMap<>();
+		test.put("Pala", pala);
+		assertEquals(test, unAttrezzo.getAttrezzi());
+	}
+
 	@Test
 	public void testGetAttrezzoVuota() {
-		Attrezzo[] arrayAttrezziVuoto = new Attrezzo[10];
-		assertArrayEquals(arrayAttrezziVuoto, noAttrezzi.getAttrezzi());
+		assertTrue(noAttrezzi.getAttrezzi().isEmpty());
 	}
-	
+
 	@Test
 	public void testAddAttrezzoStanzaPiena() {
-		assertEquals(false, this.tuttiAttrezzi.addAttrezzo(pala));
+		this.tuttiAttrezzi.addAttrezzo(pala);
+		assertTrue(this.tuttiAttrezzi.getAttrezzi().containsKey("Pala"));
 	}
-	
+
 	@Test
 	public void testAddAttrezzoStanzaVuota() {
-		assertEquals(true, this.noAttrezzi.addAttrezzo(pala));
+		this.noAttrezzi.addAttrezzo(pala);
+		assertTrue(this.noAttrezzi.getAttrezzi().containsKey("Pala"));
 	}
-	
+
 	@Test
 	public void testAddAttrezzoGiaPresente() {
 		this.noAttrezzi.addAttrezzo(pala);
-		assertEquals(true, this.noAttrezzi.addAttrezzo(pala));
+		assertEquals(pala, this.noAttrezzi.addAttrezzo(pala));
 	}
-	
+
 	@Test
 	public void testHasAttrezzoTrue() {
-		assertEquals(true, tuttiAttrezzi.hasAttrezzo("Martello"));
+		assertTrue(tuttiAttrezzi.hasAttrezzo("Martello"));
 	}
-	
+
 	@Test
 	public void testHasAttrezzoFalse() {
-		assertEquals(false, tuttiAttrezzi.hasAttrezzo("Pala"));
+		assertFalse(tuttiAttrezzi.hasAttrezzo("Pala"));
 	}
-	
+
 	@Test
 	public void testHasAttrezzoStanzaSenzaAttrezzi() {
-		assertEquals(false, noAttrezzi.hasAttrezzo("Pala"));
+		assertFalse(noAttrezzi.hasAttrezzo("Pala"));
 	}
-	
+
 	@Test
 	public void testRemoveAttrezzoTrue() {
 		assertTrue(tuttiAttrezzi.removeAttrezzo(ascia));
 	}
-	
+
 	@Test
 	public void testRemoveAttrezzoTrueRimanentiZero() {
 		assertTrue(unAttrezzo.removeAttrezzo(pala));
 	}
-	
+
 	@Test
 	public void testRemoveAttrezzoMaNonCeNiente() {
 		assertFalse(noAttrezzi.removeAttrezzo(ascia));
 	}
-	
+
 	@Test
 	public void testRemoveAttrezzoMaNonCe() {
 		assertFalse(tuttiAttrezzi.removeAttrezzo(pala));
 	}
-	
+
+	@Test
+	public void testStampeAttrezzi() {
+		System.out.println(this.unAttrezzo.getDescrizione());
+		System.out.println(this.tuttiAttrezzi.getDescrizione());
+	}
+
 }
