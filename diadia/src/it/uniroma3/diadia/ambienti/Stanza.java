@@ -45,10 +45,12 @@ public class Stanza {
 	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
 		// EDIT 25/03 risolto bug che permetteva di impostare una stanza adiacente a se
 		// stessa
-		if (this.nome != stanza.nome) {
-			this.getStanzeAdiacenti().put(direzione, stanza);
-		} else
-			return; // caso in cui c'e' una stanza adiacente a se stessa
+		if (this.nome != stanza.nome)
+			if (!stanzeAdiacenti.containsValue(stanza))	
+				// se nella stanze adiacenti non e' gia' contenuta la stanza che sto aggiungendo
+				this.getStanzeAdiacenti().put(direzione, stanza);
+			else
+				return;
 	}
 
 	/**
