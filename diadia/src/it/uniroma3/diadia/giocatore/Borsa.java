@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -111,8 +110,12 @@ public class Borsa {
 				insieme.add(attrezzo);
 			}
 		}
-
 		return result;
 	}
-
+	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso() {
+		SortedSet<Attrezzo> elenco = new TreeSet<Attrezzo>(new ComparaAttrezziPeso());
+		elenco.addAll(this.attrezzi.values());
+		return elenco;
+	}
 }

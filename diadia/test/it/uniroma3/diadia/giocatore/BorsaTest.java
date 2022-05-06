@@ -2,6 +2,7 @@ package it.uniroma3.diadia.giocatore;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -229,14 +230,14 @@ public class BorsaTest {
 
 	@Test
 	public void testRaggruppaPerPesoTreAttrezziPesoUguale() {
-		Borsa test = new Borsa(PESOMEDIO);
+		Borsa actual = new Borsa(PESOMEDIO);
 		Attrezzo peso2 = new Attrezzo("Peso2", 2);
-		test.addAttrezzo(scalpello);
-		test.addAttrezzo(corda);
-		test.addAttrezzo(peso2);
-		Map<Integer, Set<Attrezzo>> temp = new HashMap<>();
-		temp.put(2, new HashSet<Attrezzo>(Arrays.asList(corda, peso2, scalpello)));
-		assertEquals(temp, test.getContenutoRaggruppatoPerPeso());
+		actual.addAttrezzo(scalpello);
+		actual.addAttrezzo(corda);
+		actual.addAttrezzo(peso2);
+		Map<Integer, Set<Attrezzo>> expected = new HashMap<>();
+		expected.put(2, new HashSet<Attrezzo>(Arrays.asList(corda, peso2, scalpello)));
+		assertEquals(expected, actual.getContenutoRaggruppatoPerPeso());
 	}
 
 	@Test
@@ -244,12 +245,34 @@ public class BorsaTest {
 		pochiAttrezzi.addAttrezzo(scalpello);
 		pochiAttrezzi.addAttrezzo(corda);
 		pochiAttrezzi.addAttrezzo(chiave_Inglese);
-		Map<Integer, Set<Attrezzo>> temp = new HashMap<>();
-		temp.put(1, new HashSet<Attrezzo>(Arrays.asList(peso1)));
-		temp.put(2, new HashSet<Attrezzo>(Arrays.asList(corda, scalpello)));
-		temp.put(3, new HashSet<Attrezzo>(Arrays.asList(peso3)));
-		temp.put(5, new HashSet<Attrezzo>(Arrays.asList(chiave_Inglese, peso5)));
-		assertEquals(temp, pochiAttrezzi.getContenutoRaggruppatoPerPeso());
+		Map<Integer, Set<Attrezzo>> expeceted = new HashMap<>();
+		expeceted.put(1, new HashSet<Attrezzo>(Arrays.asList(peso1)));
+		expeceted.put(2, new HashSet<Attrezzo>(Arrays.asList(corda, scalpello)));
+		expeceted.put(3, new HashSet<Attrezzo>(Arrays.asList(peso3)));
+		expeceted.put(5, new HashSet<Attrezzo>(Arrays.asList(chiave_Inglese, peso5)));
+		assertEquals(expeceted, pochiAttrezzi.getContenutoRaggruppatoPerPeso());
+	}
+	
+	@Test
+	public void getSortedSetOrdinatoPerPesoVuoto() {
+		assertEquals(Collections.emptySet(), nienteAttrezzi.getSortedSetOrdinatoPerPeso());
+	}
+	
+	@Test
+	public void getSortedSetOrdinatoPerPesoGenerico() {
+		Attrezzo[] expected  = {peso1, peso3, peso5};
+		assertArrayEquals(expected, pochiAttrezzi.getSortedSetOrdinatoPerPeso().toArray());
+	}
+	
+	@Test
+	public void getSortedSetOrdinatoPerPesoGenericoStessoPesoNomeDiverso() {
+		Borsa actual = new Borsa(PESOMEDIO);
+		Attrezzo peso2 = new Attrezzo("Peso2", 2);
+		actual.addAttrezzo(scalpello);
+		actual.addAttrezzo(corda);
+		actual.addAttrezzo(peso2);
+		Attrezzo[] expected  = {corda, peso2, scalpello};
+		assertArrayEquals(expected, actual.getSortedSetOrdinatoPerPeso().toArray());
 	}
 
 }
