@@ -10,16 +10,12 @@ public class GiocatoreTest {
 	private Giocatore senzaBorsa;
 	private Giocatore conBorsa;
 	private Borsa busta;
-	private Borsa zaino;
-	
-	
-	
 	@Before
 	public void setUp() throws Exception {
 		senzaBorsa = new Giocatore("Giovanni");
 		conBorsa = new Giocatore("Mario");
 		busta = new Borsa(1);
-		zaino = new Borsa(10);
+		new Borsa(10);
 		conBorsa.setBorsa(busta);
 	}
 

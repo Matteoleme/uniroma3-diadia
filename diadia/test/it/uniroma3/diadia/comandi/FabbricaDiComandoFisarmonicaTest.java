@@ -8,7 +8,6 @@ import org.junit.Test;
 public class FabbricaDiComandoFisarmonicaTest {
 	
 	private String tuttoIlComando;
-	private Comando comando;
 	private FabbricaDiComandi fab;
 	
 	@Before
