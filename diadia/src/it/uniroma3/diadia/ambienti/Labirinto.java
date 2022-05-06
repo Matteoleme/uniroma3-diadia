@@ -19,7 +19,11 @@ public class Labirinto {
 		this.Nome = nome;
 	}
 	
-    /**
+    public Labirinto() {
+    	
+	}
+
+	/**
      * Crea tutte le stanze e le porte di collegamento
      */
     private void creaStanze() {
