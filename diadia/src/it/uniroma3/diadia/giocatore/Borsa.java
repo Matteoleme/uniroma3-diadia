@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.giocatore;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -75,9 +76,8 @@ public class Borsa {
 	 */
 
 	public List<Attrezzo> getContenutoOrdinatoPerPeso() {
-		ComparaAttrezziPeso cmp = new ComparaAttrezziPeso();
 		List<Attrezzo> elenco = new LinkedList<Attrezzo>(this.attrezzi.values());
-		elenco.sort(cmp);
+		Collections.sort(elenco, new ComparaAttrezziPeso());
 		return elenco;
 	}
 
