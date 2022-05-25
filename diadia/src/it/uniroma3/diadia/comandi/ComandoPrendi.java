@@ -22,7 +22,10 @@ public class ComandoPrendi implements Comando {
 			} else
 				io.mostraMessaggioACapo("Borsa piena non e' possibile mettere altri attrezzi");
 		} else
-			io.mostraMessaggioACapo(nomeAttrezzo + " non presente");
+			if(nomeAttrezzo!=null)
+				io.mostraMessaggioACapo(nomeAttrezzo + " non presente");
+			else
+				io.mostraMessaggioACapo("Specificare attrezzo");
 	}
 
 	@Override

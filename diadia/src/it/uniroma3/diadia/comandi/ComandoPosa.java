@@ -19,8 +19,10 @@ public class ComandoPosa implements Comando {
 			io.mostraMessaggioACapo(nomeAttrezzo + " posato");
 			return;
 
-		} else
+		} else if (nomeAttrezzo != null)
 			io.mostraMessaggioACapo(nomeAttrezzo + " non presente");
+		else
+			io.mostraMessaggioACapo("Specificare attrezzo");
 	}
 
 	@Override
