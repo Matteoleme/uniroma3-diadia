@@ -1,6 +1,7 @@
 package uniroma3.diadia;
 
 import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 import it.uniroma3.diadia.comandi.FabbricaDiComandoFisarmonica;
 import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.giocatore.Giocatore;
@@ -56,7 +57,7 @@ public class DiaDia {
 	 *         altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		FabbricaDiComandoFisarmonica istr = new FabbricaDiComandoFisarmonica();
+		FabbricaDiComandiRiflessiva istr = new FabbricaDiComandiRiflessiva();
 
 		Comando comando = istr.costruisciComando(istruzione);
 
