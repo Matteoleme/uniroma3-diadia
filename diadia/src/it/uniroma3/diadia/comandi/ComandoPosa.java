@@ -4,11 +4,15 @@ import it.uniroma3.diadia.giocatore.Borsa;
 import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
-public class ComandoPosa implements Comando {
+public class ComandoPosa extends AbstractComando {
 
 	static final private String NOME = "Posa";
 	private String nomeAttrezzo;
-
+	
+	public ComandoPosa() {
+		super(NOME, null);
+	}
+	
 	@Override
 	public void esegui(Partita partita) {
 		Borsa borsa = partita.getGiocatore().getBorsa();
@@ -28,11 +32,6 @@ public class ComandoPosa implements Comando {
 	@Override
 	public void setParametro(String parametro) {
 		this.nomeAttrezzo = parametro;
-	}
-
-	@Override
-	public String getNome() {
-		return NOME;
 	}
 
 	@Override

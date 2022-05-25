@@ -18,7 +18,7 @@ public class FabbricaDiComandoFisarmonicaTest {
 	@Test
 	public void testComandoGenericoSenzaParametro() {
 		tuttoIlComando = "vai";
-		Comando nuovo = fab.costruisciComando(tuttoIlComando);
+		AbstractComando nuovo = fab.costruisciComando(tuttoIlComando);
 		assertEquals("Vai", nuovo.getNome());
 	}
 	

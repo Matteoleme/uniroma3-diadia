@@ -1,8 +1,7 @@
 package uniroma3.diadia;
 
-import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.AbstractComando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
-import it.uniroma3.diadia.comandi.FabbricaDiComandoFisarmonica;
 import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
@@ -59,7 +58,7 @@ public class DiaDia {
 	private boolean processaIstruzione(String istruzione) {
 		FabbricaDiComandiRiflessiva istr = new FabbricaDiComandiRiflessiva();
 
-		Comando comando = istr.costruisciComando(istruzione);
+		AbstractComando comando = istr.costruisciComando(istruzione);
 
 		comando.esegui(this.partita);			// questo esegui si comportera' in base al tipo DINAMICO del comando
 		if (this.partita.vinta()) {

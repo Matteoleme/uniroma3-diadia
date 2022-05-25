@@ -4,12 +4,17 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
-public class ComandoVai implements Comando {
+public class ComandoVai extends AbstractComando {
 	
+
 	static final private String NOME = "Vai";
 	
 	private String direzione;
 
+	public ComandoVai() {
+		super(NOME, null);
+	}
+	
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra e ne stampa il
 	 * nome, altrimenti stampa un messaggio di errore
@@ -38,13 +43,8 @@ public class ComandoVai implements Comando {
 	}
 
 	@Override
-	public String getNome() {
-		return NOME;
-	}
-
-	@Override
 	public String getParametro() {
 		return this.direzione;
 	}
-
+	
 }

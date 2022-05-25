@@ -3,9 +3,14 @@ package it.uniroma3.diadia.comandi;
 import uniroma3.diadia.IO;
 import uniroma3.diadia.Partita;
 
-public class ComandoGuarda implements Comando {
+public class ComandoGuarda extends AbstractComando {
 	
 	static final public String NOME = "guarda";
+	
+	public ComandoGuarda() {
+		super(NOME, null);
+	}
+	
 	/**
 	 * stampa le informazioni sulla stanza corrente e sullo stato della partita
 	 */
@@ -16,20 +21,5 @@ public class ComandoGuarda implements Comando {
 		io.mostraMessaggioACapo("Cfu attuali " + partita.getGiocatore().getCfu());	//stampo cfu attuali
 	}
 
-	@Override
-	public void setParametro(String parametro) {
-		// niente
-
-	}
-
-	@Override
-	public String getNome() {
-		return NOME;
-	}
-
-	@Override
-	public String getParametro() {
-		return null;
-	}
 
 }
