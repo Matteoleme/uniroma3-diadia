@@ -1,5 +1,5 @@
 package it.uniroma3.diadia.comandi;
 
 public interface FabbricaDiComandi {
-	public Comando costruisciComando(String nomeComando) throws Exception;
+	public Comando costruisciComando(String nomeComando);
 }
