@@ -6,7 +6,7 @@ import uniroma3.diadia.Partita;
 public class ComandoAiuto extends AbstractComando{
 
 	static final private String[] elencoComandi = { "vai", "aiuto", "fine",
-			"prendi", "posa" };
+			"prendi", "posa", "saluta", "interagisci"};
 	static final public String NOME = "aiuto";
 	
 	public ComandoAiuto() {

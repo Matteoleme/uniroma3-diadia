@@ -177,6 +177,7 @@ public class Stanza {
 	public void setPersonaggio(AbstractPersonaggio personaggio) {
 		this.personaggio = personaggio;
 	}
+	
 	public AbstractPersonaggio getPersonaggio() {
 		return this.personaggio;
 	}
