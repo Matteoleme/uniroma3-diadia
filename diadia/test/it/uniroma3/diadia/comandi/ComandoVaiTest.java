@@ -21,7 +21,7 @@ public class ComandoVaiTest {
 	@Before
 	public void setUp() throws Exception {
 		io = new IOConsole();
-		partita = new Partita("Test", "Test", io);
+		partita = new Partita("Test", io);
 		vai = new ComandoVai();
 		isolata = new Stanza("isolata");
 		nord = new Stanza("nord");

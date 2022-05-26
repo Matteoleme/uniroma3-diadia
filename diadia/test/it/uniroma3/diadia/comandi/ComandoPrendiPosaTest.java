@@ -32,7 +32,7 @@ public class ComandoPrendiPosaTest {
 	@Before
 	public void setUp() throws Exception {
 		io = new IOConsole();
-		partita = new Partita("Test", "Test", io);
+		partita = new Partita("Test", io);
 		player = partita.getGiocatore();
 		borsa = new Borsa();
 		player.setBorsa(borsa);

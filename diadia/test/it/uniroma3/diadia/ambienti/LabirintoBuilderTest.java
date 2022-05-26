@@ -156,6 +156,13 @@ public class LabirintoBuilderTest {
 		assertEquals(terzaStanza, tre.getLabirinto().getStanzaVincente().getNome());
 	}
 	
+	@Test
+	public void testCreaStanzePredefinito() {
+		Labirinto test = new LabirintoBuilder().creaStanze();
+		assertEquals("Biblioteca", test.getStanzaVincente().getNome());
+		assertEquals("Atrio", test.getStanzaIniziale().getNome());
+	}
+	
 	
 	
 }
