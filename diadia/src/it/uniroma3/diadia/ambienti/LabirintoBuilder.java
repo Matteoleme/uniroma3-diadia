@@ -11,7 +11,7 @@ public class LabirintoBuilder {
 
 	public LabirintoBuilder() {
 		this.labirinto = new Labirinto();
-		this.stanzeLabirinto = new HashMap<>();
+		this.stanzeLabirinto = labirinto.getStanze();
 	}
 
 	public LabirintoBuilder addStanzaIniziale(String stanzaIniziale) {
