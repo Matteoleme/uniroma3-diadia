@@ -22,10 +22,10 @@ public class PartitaTest {
 	@Before
 	public void setUpStanze() {
 		io = new IOConsole();
-		mappaProva = new Labirinto("Test", "Test");
+		mappaProva = new Labirinto("Test");
 		new Giocatore("Manichino");
-		partita = new Partita("Test", "Test", io);
-		partita2 = new Partita("Test", "Test", io);		//Partita senza stanza corrente o vincente
+		partita = new Partita("Test", io);
+		partita2 = new Partita("Test", io);		//Partita senza stanza corrente o vincente
 		stanzaVincente = new Stanza("StanzaVincente");
 		stanzaCorrente = new Stanza("StanzaCorrente");
 		stanzaTest = new Stanza("StanzaTest");
