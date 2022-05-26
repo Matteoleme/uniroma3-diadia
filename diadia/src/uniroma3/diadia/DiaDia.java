@@ -1,5 +1,6 @@
 package uniroma3.diadia;
 
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.AbstractComando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 import it.uniroma3.diadia.giocatore.Borsa;
@@ -31,12 +32,15 @@ public class DiaDia {
 	private IO io;
 
 	public DiaDia(IO io) {
-		this.partita = new Partita("Universita'", io);
+		this.partita = new Partita("Università", io);
 		this.io = io;
 	}
 
 	public void gioca() {
 		String istruzione;
+		
+		LabirintoBuilder mappaDiaDia = new LabirintoBuilder();
+		this.partita.setLabirinto(mappaDiaDia.creaStanze());
 
 		io.mostraMessaggioACapo(MESSAGGIO_BENVENUTO);
 		// EDIT 31/03 aggiunta di un metodo per creare una nuova borsa

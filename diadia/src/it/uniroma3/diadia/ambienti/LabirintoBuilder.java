@@ -94,5 +94,46 @@ public class LabirintoBuilder {
 	public Map<String, Stanza> getStanze() {
 		return this.stanzeLabirinto;
 	}
+	
+	/**
+	 * crea le stanze per la mappa iniziale DiaDia
+	 */
+	public Labirinto creaStanze() {
+		
+		/* crea stanze e le aggiungo nel labirinto */		
+		this.addStanza("Aula N10");
+		this.addStanza("Aula N11");
+		this.addStanza("Laboratorio");
+		this.addStanza("Atrio");
+		this.addStanza("Biblioteca");
+		this.addStanzaIniziale("Atrio");
+		this.addStanzaVincente("Biblioteca");
+		
+		/* imposto adiacenze */
+		this.impostaAdiacente("Atrio", "Biblioteca", "nord");
+		this.impostaAdiacente("Atrio", "Aula N11", "est");
+		this.impostaAdiacente("Atrio", "Aula N10", "sud");
+		this.impostaAdiacente("Atrio", "Laboratorio", "ovest");
+		
+		this.impostaAdiacente("Aula N11", "Laboratorio", "est");
+		this.impostaAdiacente("Aula N11", "Atrio", "ovest");
+		
+		this.impostaAdiacente("Aula N10", "Atrio", "nord");
+		this.impostaAdiacente("Aula N10", "Aula N11", "est");
+		this.impostaAdiacente("Aula N10", "Laboratorio", "ovest");
+		
+		this.impostaAdiacente("Laboratorio", "Atrio", "est");
+		this.impostaAdiacente("Laboratorio", "Aula N11", "ovest");
+		
+		this.impostaAdiacente("Biblioteca", "Atrio", "sud");
+		
+		/* aggiungo attrezzi nelle stanze */
+		this.addAttrezzo("lanterna", "Aula N10", 3);
+		this.addAttrezzo("osso", "Atrio", 3);
+		
+		this.labirinto.setNome("Università");
+		
+		return this.labirinto;
+	}
 
 }

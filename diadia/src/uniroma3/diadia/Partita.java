@@ -27,15 +27,6 @@ public class Partita {
 		this.stanzaCorrente = this.mappa.getStanzaIniziale();
 		this.io = io;
 	}
-	
-	public Partita(String mappa, String test, IO io){
-		this.mappa = new Labirinto(mappa, "Test");
-		this.finita = false;
-		this.player = new Giocatore("Luca");
-		this.stanzaCorrente = this.mappa.getStanzaIniziale();
-		this.io = (IOConsole) io;
-	}
-
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
@@ -50,11 +41,16 @@ public class Partita {
 	}
 	
 	public void setGiocatore(String nomeGiocatore) {
-		this.player.setNome(nomeGiocatore);;
+		this.player.setNome(nomeGiocatore);
 	}
 	
 	public Labirinto getLabirinto() {
 		return this.mappa;
+	}
+	
+	public void setLabirinto(Labirinto mappa) {
+		this.mappa = mappa;
+		this.stanzaCorrente = mappa.getStanzaIniziale();
 	}
 	
 	/**
