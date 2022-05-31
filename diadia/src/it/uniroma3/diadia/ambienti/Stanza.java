@@ -1,7 +1,9 @@
 package it.uniroma3.diadia.ambienti;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
@@ -181,4 +183,29 @@ public class Stanza {
 	public AbstractPersonaggio getPersonaggio() {
 		return this.personaggio;
 	}
+	
+	public Stanza piuAttrezzi() {
+		Set<Stanza> stanze = new HashSet<>(this.getStanzeAdiacenti().values());
+		Stanza result = null;
+		for (Stanza questa : stanze) {
+			if (result == null)
+				result = questa;
+			else if (result.getAttrezzi().size() < questa.getAttrezzi().size())
+				result = questa;
+		}
+		return result;
+	}
+	
+	public Stanza menoAttrezzi() {
+		Set<Stanza> stanze = new HashSet<>(this.getStanzeAdiacenti().values());
+		Stanza result = null;
+		for (Stanza questa : stanze) {
+			if (result == null)
+				result = questa;
+			else if (result.getAttrezzi().size() > questa.getAttrezzi().size())
+				result = questa;
+		}
+		return result;
+	}
+
 }
