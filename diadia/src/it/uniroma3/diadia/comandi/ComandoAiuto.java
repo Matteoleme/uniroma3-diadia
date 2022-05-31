@@ -6,7 +6,7 @@ import uniroma3.diadia.Partita;
 public class ComandoAiuto extends AbstractComando{
 
 	static final private String[] elencoComandi = { "vai", "aiuto", "fine",
-			"prendi", "posa", "saluta", "interagisci"};
+			"prendi", "posa", "saluta", "interagisci", "regala"};
 	static final public String NOME = "aiuto";
 	
 	public ComandoAiuto() {
@@ -21,9 +21,6 @@ public class ComandoAiuto extends AbstractComando{
 		IO io = partita.getIO();
 		for (int i = 0; i < elencoComandi.length; i++) {
 			io.mostraMessaggio(elencoComandi[i] + " ");
-			if (i == 0)
-				io.mostraMessaggio("+ direzione "); // EDIT 16/03 aggiunta di un aiuto per capire il comando
-													// vai
 		}
 		io.mostraMessaggioACapo("");
 	}
