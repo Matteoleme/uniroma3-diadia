@@ -42,6 +42,13 @@ public class Attrezzo {
 	public int getPeso() {
 		return this.peso;
 	}
+	
+	/**
+	 * modifica il peso dell'attrezzo
+	 */
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 
 	/**
 	 * Restituisce una rappresentazione stringa di questo attrezzo
