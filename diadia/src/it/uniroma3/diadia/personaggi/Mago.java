@@ -5,12 +5,12 @@ import uniroma3.diadia.Partita;
 
 public class Mago extends AbstractPersonaggio {
 
-	private static final String PRESENTAZIONE_DEFAULT = "Ciao, sono il Mago Merlino";
-	private static final String MESSAGGIO_DONO = "Sei un vero simpaticone, "
+	protected static final String PRESENTAZIONE_DEFAULT = "Attenzione a non fidarti di tutti quanti...";
+	protected static final String MESSAGGIO_DONO = "Sei un vero simpaticone, "
 			+ "con una mia magica azione, troverai un nuovo oggetto " + "per il tuo borsone!";
-	private static final String MESSAGGIO_SCUSE = "Mi spiace, ma non ho piu' nulla...";
-	private static final String MESSAGGIO_REGALO = "La tua gentilezza ti ha premiato...";
-	private static final String MESSAGGIO_REGALO_PESO1 = "Gia' troppo leggero!";
+	protected static final String MESSAGGIO_SCUSE = "Mi spiace, ma non ho piu' nulla...";
+	protected static final String MESSAGGIO_REGALO = "La tua gentilezza ti ha premiato...";
+	protected static final String MESSAGGIO_REGALO_PESO1 = "Gia' troppo leggero!";
 
 	private Attrezzo attrezzo;
 

@@ -24,7 +24,7 @@ public abstract class AbstractPersonaggio {
 
 	public String saluta() {
 		StringBuilder risposta = new StringBuilder("Ciao, io sono ");
-		risposta.append(this.getNome() + ".");
+		risposta.append(this.getNome() + ". ");
 		if (!haSalutato)
 			risposta.append(this.presentazione);
 		else
